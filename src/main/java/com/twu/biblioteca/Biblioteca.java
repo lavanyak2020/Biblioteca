@@ -22,4 +22,8 @@ public class Biblioteca {
     public List<MenuOption> getMenuItems() {
         return menu.getMenuOption();
     }
+
+    public void execute(int userInput) {
+        menu.executeOption(userInput);
+    }
 }
