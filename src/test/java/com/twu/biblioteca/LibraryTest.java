@@ -11,9 +11,9 @@ class LibraryTest {
 
     @Test
     public void shouldReturnAllBooks() {
-        Book book1 = new Book("Quantitative Aptitude");
-        Book book2 = new Book("Head First Java");
-        Book book3 = new Book("Introduction to algorithms");
+        Book book1 = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+        Book book2 = new Book("Head First Java", "Bert Bates, Kathy Sierra", 2005);
+        Book book3 = new Book("Alchemist","Paulo Coelho", 1990);
         List<Book> books = List.of(book1,book2,book3);
         Library library = new Library();
 
