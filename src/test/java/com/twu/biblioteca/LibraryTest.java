@@ -41,4 +41,14 @@ class LibraryTest {
 
         assertThat(library.getBooks(), is(equalTo(expectedAvailableBooks)));
     }
+
+    @Test
+    public void shouldReturnSuccessMessageIfBookIsCheckoutSuccessfully() {
+        Library library = new Library();
+        List<Book> books = library.getBooks();
+
+        String actualMessage = library.checkoutBook("Quantitative aptitude");
+
+        assertThat(actualMessage, is(equalTo("Thank you! Enjoy the book")));
+    }
 }

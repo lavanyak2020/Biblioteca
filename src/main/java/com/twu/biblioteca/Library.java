@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Library {
+    public static final String CHECKOUT_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
     private List<Book> books;
 
     Library() {
@@ -29,10 +30,13 @@ class Library {
         return availableBooks;
     }
 
-    public void checkoutBook(String bookName) {
+    public String checkoutBook(String bookName) {
         Book book = getBookByName(bookName);
-        if (book != null && book.isAvailable())
+        if (book != null && book.isAvailable()) {
             book.checkout();
+            return CHECKOUT_SUCCESS_MESSAGE;
+        }
+        return null;
     }
 
     private Book getBookByName(String bookName) {
