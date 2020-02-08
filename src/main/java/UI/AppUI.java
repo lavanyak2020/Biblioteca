@@ -1,6 +1,7 @@
 package UI;
 
 import com.twu.biblioteca.Book;
+import com.twu.biblioteca.MenuOption;
 
 import java.util.List;
 
@@ -15,6 +16,14 @@ public class AppUI {
         for(Book book : books){
             System.out.println(book.getName()+"\t\t"+book.getAuthor()+"\t\t"+book.getPublicationYear());
             System.out.println("--------------------------------------------------------------------");
+        }
+    }
+
+    public void displayMenu(List<MenuOption> menuItems) {
+        int i = 1;
+        for(MenuOption option : menuItems) {
+            System.out.println(i+" . "+option.getName());
+            i ++;
         }
     }
 }
