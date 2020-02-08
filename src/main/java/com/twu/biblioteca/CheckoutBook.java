@@ -21,6 +21,7 @@ public class CheckoutBook extends MenuOption{
     @Override
     public void execute() {
         String bookName = appUI.getBookNameFromUser();
-        library.checkoutBook(bookName);
+        String message = library.checkoutBook(bookName);
+        appUI.displayMessage(message);
     }
 }
