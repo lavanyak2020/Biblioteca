@@ -30,7 +30,7 @@ public class AppUI {
 
     public int getUserInput() {
         Scanner scan = new Scanner(System.in);
-
+        System.out.println("Enter your option number:");
         return scan.nextInt();
     }
 }

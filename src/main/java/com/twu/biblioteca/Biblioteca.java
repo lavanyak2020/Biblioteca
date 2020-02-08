@@ -13,8 +13,9 @@ public class Biblioteca {
     public Biblioteca(AppUI appUI) {
         library = new Library();
         this.appUI = appUI;
-        menu = new Menu(library,appUI);
+        menu = new Menu(library, appUI);
     }
+
     public String getWelcomeMessage() {
         return WELCOME_MESSAGE;
     }
