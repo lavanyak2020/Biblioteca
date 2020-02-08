@@ -29,4 +29,16 @@ class LibraryTest {
 
         assertThat(books.get(0).isAvailable(), is(equalTo(false)));
     }
+
+    @Test
+    public void shouldReturnOnlyAvailableBooks() {
+        Library library = new Library();
+        Book book2 = new Book("Head First Java", "Bert Bates, Kathy Sierra", 2005);
+        Book book3 = new Book("Alchemist","Paulo Coelho", 1990);
+        List<Book> expectedAvailableBooks = List.of(book2,book3);
+
+        library.checkoutBook("Quantitative aptitude");
+
+        assertThat(library.getBooks(), is(equalTo(expectedAvailableBooks)));
+    }
 }

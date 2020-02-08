@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Library {
@@ -18,7 +19,14 @@ class Library {
     }
 
     public List<Book> getBooks() {
-        return books;
+        List<Book> availableBooks = new ArrayList<>();
+
+        for (Book book : books) {
+            if (book.isAvailable()) {
+                availableBooks.add(book);
+            }
+        }
+        return availableBooks;
     }
 
     public void checkoutBook(String bookName) {
