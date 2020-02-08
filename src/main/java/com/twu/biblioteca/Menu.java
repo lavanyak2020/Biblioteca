@@ -12,7 +12,11 @@ public class Menu {
     List<MenuOption> options;
 
     public Menu(Library library, AppUI appUI) {
-        options = List.of(createListOfBooksOption(library, appUI),QuitOption.createQuitOption(appUI));
+        options = List.of(
+                createListOfBooksOption(library, appUI),
+                CheckoutBook.createCheckoutBookOption(library,appUI),
+                QuitOption.createQuitOption(appUI)
+        );
         this.appUI = appUI;
     }
 

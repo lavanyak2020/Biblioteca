@@ -41,4 +41,10 @@ public class AppUI {
     public void quitApplication() {
         System.exit(0);
     }
+
+    public String getBookNameFromUser() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter Book name:");
+        return scan.nextLine();
+    }
 }
