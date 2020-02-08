@@ -11,6 +11,10 @@ public abstract class MenuOption {
         this.appUI = appUI;
     }
 
+    protected MenuOption() {
+
+    }
+
     public String getName() {
         return name;
     }
