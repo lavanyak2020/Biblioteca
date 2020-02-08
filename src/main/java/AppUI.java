@@ -9,8 +9,10 @@ public class AppUI {
     }
 
     public void displayListOfBooks(List<Book> books) {
+        System.out.println("--------------------------------------------------------------------");
         for(Book book : books){
-            System.out.println(book.getName());
+            System.out.println(book.getName()+"\t\t"+book.getAuthor()+"\t\t"+book.getPublicationYear());
+            System.out.println("--------------------------------------------------------------------");
         }
     }
 }
