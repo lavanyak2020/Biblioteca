@@ -19,4 +19,14 @@ class LibraryTest {
 
         assertThat(library.getBooks(), is(equalTo(books)));
     }
+
+    @Test
+    public void shouldCheckoutBookWhichItContains() {
+        Library library = new Library();
+        List<Book> books = library.getBooks();
+
+        library.checkoutBook("Quantitative aptitude");
+
+        assertThat(books.get(0).isAvailable(), is(equalTo(false)));
+    }
 }
