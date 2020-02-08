@@ -14,7 +14,8 @@ public class Menu {
     public Menu(Library library, AppUI appUI) {
         options = List.of(
                 createListOfBooksOption(library, appUI),
-                CheckoutBook.createCheckoutBookOption(library,appUI),
+                CheckoutBook.createCheckoutBookOption(library, appUI),
+                ReturnBook.createReturnBookOption(library, appUI),
                 QuitOption.createQuitOption(appUI)
         );
         this.appUI = appUI;
