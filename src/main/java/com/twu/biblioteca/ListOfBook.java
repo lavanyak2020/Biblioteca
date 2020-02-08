@@ -17,6 +17,7 @@ public class ListOfBook extends MenuOption {
 
         return INSTANCE;
     }
+
     @Override
     public void execute() {
         appUI.displayListOfBooks(library.getBooks());

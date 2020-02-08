@@ -24,7 +24,7 @@ class BibliotecaTest {
     public void shouldReturnMenuItems() {
         AppUI appUI = mock(AppUI.class);
         Library library = mock(Library.class);
-        MenuOption menuOption = ListOfBook.createListOfBooksOption(library,appUI);
+        MenuOption menuOption = ListOfBook.createListOfBooksOption(library, appUI);
         Biblioteca biblioteca = new Biblioteca(appUI);
 
         assertThat(biblioteca.getMenuItems(), is(equalTo(List.of(menuOption))));
