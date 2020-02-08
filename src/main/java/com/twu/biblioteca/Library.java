@@ -40,6 +40,13 @@ class Library {
         return CHECKOUT_UNSUCCESS_MESSAGE;
     }
 
+    public void returnBook(String bookName) {
+        Book book = getBookByName(bookName);
+        if (book != null && !book.isAvailable()) {
+            book.returned();
+        }
+    }
+
     private Book getBookByName(String bookName) {
         for (Book book : books) {
             if (book.getName().equalsIgnoreCase(bookName)) {
