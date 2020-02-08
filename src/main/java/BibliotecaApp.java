@@ -14,5 +14,6 @@ public class BibliotecaApp {
         biblioteca = new Biblioteca(appUI);
         appUI.displayWelcomeMessage(biblioteca.getWelcomeMessage());
         appUI.displayMenu(biblioteca.getMenuItems());
+        int userInput = appUI.getUserInput();
     }
 }

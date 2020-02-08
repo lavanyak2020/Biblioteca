@@ -4,6 +4,7 @@ import com.twu.biblioteca.Book;
 import com.twu.biblioteca.MenuOption;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class AppUI {
 
@@ -13,17 +14,23 @@ public class AppUI {
 
     public void displayListOfBooks(List<Book> books) {
         System.out.println("--------------------------------------------------------------------");
-        for(Book book : books){
-            System.out.println(book.getName()+"\t\t"+book.getAuthor()+"\t\t"+book.getPublicationYear());
+        for (Book book : books) {
+            System.out.println(book.getName() + "\t\t" + book.getAuthor() + "\t\t" + book.getPublicationYear());
             System.out.println("--------------------------------------------------------------------");
         }
     }
 
     public void displayMenu(List<MenuOption> menuItems) {
         int i = 1;
-        for(MenuOption option : menuItems) {
-            System.out.println(i+" . "+option.getName());
-            i ++;
+        for (MenuOption option : menuItems) {
+            System.out.println(i + " . " + option.getName());
+            i++;
         }
+    }
+
+    public int getUserInput() {
+        Scanner scan = new Scanner(System.in);
+
+        return scan.nextInt();
     }
 }
