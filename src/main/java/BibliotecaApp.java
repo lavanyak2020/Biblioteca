@@ -10,7 +10,7 @@ public class BibliotecaApp {
     private void start() {
         AppUI appUI = new AppUI();
         Biblioteca biblioteca = new Biblioteca(appUI);
-        appUI.displayWelcomeMessage(biblioteca.getWelcomeMessage());
+        appUI.displayMessage(biblioteca.getWelcomeMessage());
         do {
             appUI.displayMenu(biblioteca.getMenuItems());
             int userInput = appUI.getUserInput();

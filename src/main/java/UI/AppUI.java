@@ -8,10 +8,6 @@ import java.util.Scanner;
 
 public class AppUI {
 
-    public void displayWelcomeMessage(String message) {
-        System.out.println(message);
-    }
-
     public void displayListOfBooks(List<Book> books) {
         System.out.println("--------------------------------------------------------------------");
         for (Book book : books) {
@@ -22,8 +18,9 @@ public class AppUI {
 
     public void displayMenu(List<MenuOption> menuItems) {
         int i = 1;
+        System.out.println("\n\n*-------------------------------* Menu *-------------------------------*");
         for (MenuOption option : menuItems) {
-            System.out.println(i + " . " + option.getName());
+            System.out.println("\t\t"+i + " . " + option.getName());
             i++;
         }
     }
@@ -35,10 +32,11 @@ public class AppUI {
     }
 
     public void displayMessage(String message) {
-        System.out.println(message);
+        System.out.println("\t**********************\t"+message+"\t**********************\t");
     }
 
     public void quitApplication() {
+        System.out.println("\t..................(^.^) Bye.. Bye... Bye....... ...................:D");
         System.exit(0);
     }
 
