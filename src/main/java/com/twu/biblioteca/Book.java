@@ -30,6 +30,11 @@ public class Book {
     public boolean isAvailable() {
         return availableStatus;
     }
+
+    public void checkout() {
+        availableStatus = false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

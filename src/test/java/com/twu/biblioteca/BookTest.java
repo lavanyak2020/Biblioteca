@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BookTest {
@@ -22,5 +23,14 @@ class BookTest {
         Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
 
         assertTrue(book.isAvailable());
+    }
+
+    @Test
+    public void shouldNotAvailableAfterCheckout() {
+        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+
+        book.checkout();
+        
+        assertFalse(book.isAvailable());
     }
 }
