@@ -45,10 +45,19 @@ class LibraryTest {
     @Test
     public void shouldReturnSuccessMessageIfBookIsCheckoutSuccessfully() {
         Library library = new Library();
-        List<Book> books = library.getBooks();
 
         String actualMessage = library.checkoutBook("Quantitative aptitude");
 
         assertThat(actualMessage, is(equalTo("Thank you! Enjoy the book")));
+    }
+
+    @Test
+    public void shouldReturnUnsuccessMessageWhileCheckoutUnavailableBook() {
+        Library library = new Library();
+        library.checkoutBook("Quantitative aptitude");
+
+        String actualMessage = library.checkoutBook("Quantitative aptitude");
+
+        assertThat(actualMessage, is(equalTo("Sorry, that book is not available")));
     }
 }

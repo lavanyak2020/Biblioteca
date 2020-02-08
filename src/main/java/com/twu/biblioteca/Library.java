@@ -5,6 +5,7 @@ import java.util.List;
 
 class Library {
     public static final String CHECKOUT_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
+    public static final String CHECKOUT_UNSUCCESS_MESSAGE = "Sorry, that book is not available";
     private List<Book> books;
 
     Library() {
@@ -36,7 +37,7 @@ class Library {
             book.checkout();
             return CHECKOUT_SUCCESS_MESSAGE;
         }
-        return null;
+        return CHECKOUT_UNSUCCESS_MESSAGE;
     }
 
     private Book getBookByName(String bookName) {
