@@ -10,8 +10,8 @@ class BookTest {
 
     @Test
     public void shouldEquateTwoSameBooks() {
-        Book book1 = new Book("Quantitative Aptitude");
-        Book book2 = new Book("Quantitative Aptitude");
+        Book book1 = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+        Book book2 = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
 
         assertThat(book1, is(equalTo(book2)));
     }
