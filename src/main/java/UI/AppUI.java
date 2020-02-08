@@ -33,4 +33,8 @@ public class AppUI {
         System.out.println("Enter your option number:");
         return scan.nextInt();
     }
+
+    public void displayMessage(String message) {
+        System.out.println(message);
+    }
 }
