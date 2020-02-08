@@ -21,8 +21,9 @@ public class Menu {
     }
 
     public void executeOption(int optionIndex) {
-        if (optionIndex < 0 || optionIndex > options.size())
+        if (optionIndex < 0 || optionIndex >= options.size())
             appUI.displayMessage(INVALID_OPTION_MESSAGE);
-        options.get(optionIndex).execute();
+        else
+            options.get(optionIndex).execute();
     }
 }

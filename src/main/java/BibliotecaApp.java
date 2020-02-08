@@ -13,8 +13,10 @@ public class BibliotecaApp {
         appUI = new AppUI();
         biblioteca = new Biblioteca(appUI);
         appUI.displayWelcomeMessage(biblioteca.getWelcomeMessage());
-        appUI.displayMenu(biblioteca.getMenuItems());
-        int userInput = appUI.getUserInput();
-        biblioteca.execute(userInput - 1);
+        do {
+            appUI.displayMenu(biblioteca.getMenuItems());
+            int userInput = appUI.getUserInput();
+            biblioteca.execute(userInput - 1);
+        } while (true);
     }
 }
