@@ -6,11 +6,13 @@ public class Book {
     private final String name;
     private final String author;
     private final int publicationYear;
+    private boolean availableStatus;
 
     public Book(String name, String author, int publicationYear) {
         this.name = name;
         this.author = author;
         this.publicationYear = publicationYear;
+        availableStatus = true;
     }
 
     public String getName() {
@@ -25,6 +27,9 @@ public class Book {
         return publicationYear;
     }
 
+    public boolean isAvailable() {
+        return availableStatus;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
