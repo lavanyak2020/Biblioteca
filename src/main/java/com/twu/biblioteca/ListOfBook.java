@@ -4,12 +4,19 @@ import UI.AppUI;
 
 public class ListOfBook extends MenuOption {
     private Library library;
+    private static final ListOfBook INSTANCE = new ListOfBook();
 
-    public ListOfBook(Library library, AppUI appUI) {
-        super("List Of Books", appUI);
-        this.library = library;
+    private ListOfBook() {
+        super();
     }
 
+    public static ListOfBook createListOfBooksOption(Library library, AppUI appUI) {
+        INSTANCE.appUI = appUI;
+        INSTANCE.library = library;
+        INSTANCE.name = "List Of Books";
+
+        return INSTANCE;
+    }
     @Override
     public void execute() {
         appUI.displayListOfBooks(library.getBooks());
