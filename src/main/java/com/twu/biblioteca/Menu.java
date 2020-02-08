@@ -16,4 +16,8 @@ public class Menu {
     public List<MenuOption> getMenuOption() {
         return options;
     }
+
+    public void executeOption(int optionIndex) {
+        options.get(optionIndex).execute();
+    }
 }
