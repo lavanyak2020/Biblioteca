@@ -2,10 +2,10 @@ package com.twu.biblioteca;
 
 import java.util.List;
 
-public class Library {
+class Library {
     private List<Book> books;
 
-    public Library(){
+    Library(){
         init();
     }
 
