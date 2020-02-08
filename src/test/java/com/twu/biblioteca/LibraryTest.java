@@ -82,4 +82,13 @@ class LibraryTest {
 
         assertThat(actualMessage, is(equalTo("Thank you for returning the book")));
     }
+
+    @Test
+    public void shouldReturnUnsuccessMessageWhileReturningInvalidBook() {
+        Library library = new Library();
+
+        String actualMessage = library.returnBook("Quantitative aptitude");
+
+        assertThat(actualMessage, is(equalTo("That is not a valid book to return.")));
+    }
 }
