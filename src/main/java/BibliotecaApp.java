@@ -12,5 +12,6 @@ public class BibliotecaApp {
         appUI = new AppUI();
         biblioteca = new Biblioteca();
         appUI.displayWelcomeMessage(biblioteca.getWelcomeMessage());
+        appUI.displayListOfBooks(biblioteca.getListOfBooks());
     }
 }
