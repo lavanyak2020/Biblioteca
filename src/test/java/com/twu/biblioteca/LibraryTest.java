@@ -72,4 +72,14 @@ class LibraryTest {
 
         assertThat(books.get(0).isAvailable(), is(equalTo(true)));
     }
+
+    @Test
+    public void shouldReturnSuccessMessageIfBookIsReturnedSuccessfully() {
+        Library library = new Library();
+        library.checkoutBook("Quantitative aptitude");
+
+        String actualMessage = library.returnBook("Quantitative aptitude");
+
+        assertThat(actualMessage, is(equalTo("Thank you for returning the book")));
+    }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 class Library {
     public static final String CHECKOUT_SUCCESS_MESSAGE = "Thank you! Enjoy the book";
     public static final String CHECKOUT_UNSUCCESS_MESSAGE = "Sorry, that book is not available";
+    public static final String RETURN_SUCCESS_MESSAGE = "Thank you for returning the book";
     private List<Book> books;
 
     Library() {
@@ -40,11 +41,13 @@ class Library {
         return CHECKOUT_UNSUCCESS_MESSAGE;
     }
 
-    public void returnBook(String bookName) {
+    public String returnBook(String bookName) {
         Book book = getBookByName(bookName);
         if (book != null && !book.isAvailable()) {
             book.returned();
+            return RETURN_SUCCESS_MESSAGE;
         }
+        return null;
     }
 
     private Book getBookByName(String bookName) {

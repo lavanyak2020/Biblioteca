@@ -21,6 +21,7 @@ public class ReturnBook extends MenuOption {
     @Override
     public void execute() {
         String bookName = appUI.getBookNameFromUser();
-        library.returnBook(bookName);
+        String message = library.returnBook(bookName);
+        appUI.displayMessage(message);
     }
 }
