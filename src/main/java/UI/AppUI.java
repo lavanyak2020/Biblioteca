@@ -37,4 +37,8 @@ public class AppUI {
     public void displayMessage(String message) {
         System.out.println(message);
     }
+
+    public void quitApplication() {
+        System.exit(0);
+    }
 }
