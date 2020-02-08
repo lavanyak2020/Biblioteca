@@ -30,7 +30,17 @@ class BookTest {
         Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
 
         book.checkout();
-        
+
         assertFalse(book.isAvailable());
+    }
+
+    @Test
+    public void shouldAvailableAfterReturn() {
+        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+        book.checkout();
+
+        book.returned();
+
+        assertTrue(book.isAvailable());
     }
 }

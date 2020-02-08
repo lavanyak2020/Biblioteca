@@ -35,6 +35,9 @@ public class Book {
         availableStatus = false;
     }
 
+    public void returned() {
+        availableStatus = true;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
