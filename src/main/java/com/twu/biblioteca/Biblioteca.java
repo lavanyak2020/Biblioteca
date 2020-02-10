@@ -7,13 +7,11 @@ import java.util.List;
 import static com.twu.biblioteca.Message.*;
 
 public class Biblioteca {
-    private final AppUI appUI;
     private Library library;
     private Menu menu;
 
     public Biblioteca(AppUI appUI) {
         library = new Library();
-        this.appUI = appUI;
         menu = new Menu(library, appUI);
     }
 

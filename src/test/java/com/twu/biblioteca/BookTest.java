@@ -26,6 +26,27 @@ class BookTest {
     }
 
     @Test
+    public void shouldReturnNameOfBook() {
+        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+
+        assertThat(book.getName(), is(equalTo("Quantitative Aptitude")));
+    }
+
+    @Test
+    public void shouldReturnAuthorNameOfBook() {
+        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+
+        assertThat(book.getAuthor(), is(equalTo("RS Agarwal")));
+    }
+
+    @Test
+    public void shouldReturnPublishedYearOfBook() {
+        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+
+        assertThat(book.getPublicationYear(), is(equalTo(2008)));
+    }
+
+    @Test
     public void shouldNotAvailableAfterCheckout() {
         Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
 
