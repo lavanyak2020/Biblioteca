@@ -9,23 +9,24 @@ import java.util.List;
 import static com.twu.biblioteca.consoleInterface.Message.*;
 
 public class BibliotecaApp {
-    ConsoleInterface appUI;
-    Library library;
+    private ConsoleInterface appUI;
+    private Library library;
     private List<MenuOption> menuOptions;
 
     public static void main(String[] args) {
-        new BibliotecaApp().start();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.library = new Library();
+        bibliotecaApp.appUI = new ConsoleInterface(bibliotecaApp.library.getAllBooks());
+        bibliotecaApp.start();
     }
 
     private void start() {
-        library = new Library();
-        appUI = new ConsoleInterface(library.getBooks());
         initializeMenu(library, appUI);
         appUI.displayMessage(WELCOME_MESSAGE);
         do {
             appUI.displayMenu(menuOptions);
             int userInput = appUI.getUserInput();
-            appUI.executeOption(userInput - 1,menuOptions);
+            appUI.executeOption(userInput - 1, menuOptions);
         } while (true);
     }
 

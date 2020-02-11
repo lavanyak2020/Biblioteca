@@ -2,6 +2,9 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Library;
+import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
+import com.twu.biblioteca.bussinesslogic.execption.BookIsNotAvailable;
+import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,6 +12,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LibraryTest {
 
@@ -24,7 +28,7 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldReturnOnlyAvailableBooks() {
+    public void shouldReturnOnlyAvailableBooks() throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
         Library library = new Library();
         Book book1 = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
         Book book2 = new Book("Head First Java", "Bert Bates, Kathy Sierra", 2005);
@@ -36,44 +40,19 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldReturnSuccessMessageIfBookIsCheckoutSuccessfully() {
-        Library library = new Library();
-        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
-
-        String actualMessage = library.checkoutBook(book);
-
-        assertThat(actualMessage, is(equalTo("Thank you! Enjoy the book")));
-    }
-
-    @Test
-    public void shouldReturnUnsuccessMessageWhileCheckoutUnavailableBook() {
+    public void shouldThrowExceptionWhileCheckoutUnavailableBook() throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
         Library library = new Library();
         Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
         library.checkoutBook(book);
 
-        String actualMessage = library.checkoutBook(book);
-
-        assertThat(actualMessage, is(equalTo("Sorry, that book is not available")));
+        assertThrows(BookIsNotAvailable.class,() -> library.checkoutBook(book));
     }
 
     @Test
-    public void shouldReturnSuccessMessageIfBookIsReturnedSuccessfully() {
-        Library library = new Library();
-        Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
-        library.checkoutBook(book);
-
-        String actualMessage = library.returnBook(book);
-
-        assertThat(actualMessage, is(equalTo("Thank you for returning the book")));
-    }
-
-    @Test
-    public void shouldReturnUnsuccessMessageWhileReturningInvalidBook() {
+    public void shouldThrowExceptionWhileReturningInvalidBook() {
         Library library = new Library();
         Book book = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
 
-        String actualMessage = library.returnBook(book);
-
-        assertThat(actualMessage, is(equalTo("That is not a valid book to return.")));
+        assertThrows(BookIsNotCheckout.class,() -> library.returnBook(book));
     }
 }

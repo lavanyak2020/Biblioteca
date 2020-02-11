@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
+import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
 import com.twu.biblioteca.consoleInterface.ConsoleInterface;
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Library;
@@ -12,7 +14,7 @@ import static org.mockito.Mockito.times;
 class ReturnBookTest {
 
     @Test
-    public void shouldReturnBook() {
+    public void shouldReturnBook() throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
         Library library = mock(Library.class);
         ConsoleInterface appUI = mock(ConsoleInterface.class);
         Book book = mock(Book.class);

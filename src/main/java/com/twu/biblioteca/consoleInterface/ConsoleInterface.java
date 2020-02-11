@@ -39,6 +39,7 @@ public class ConsoleInterface implements PresentationInterface {
             displayMessage("Invalid Option");
             return;
         }
+        System.out.println("fff");
         MenuOption selectedOption = menuOptions.get(optionIndex);
         try {
             selectedOption.execute();
@@ -50,6 +51,7 @@ public class ConsoleInterface implements PresentationInterface {
             displayMessage(RETURN_UNSUCCESS_MESSAGE);
         }
     }
+
     public void displayMessage(String message) {
         System.out.println("\t**********************\t" + message + "\t**********************\t");
     }
@@ -90,6 +92,7 @@ public class ConsoleInterface implements PresentationInterface {
 
     private Book getBookByName(String bookName) {
         for (Book book : books) {
+            System.out.println(book.getName());
             if (book.getName().equals(bookName)) {
                 return book;
             }
