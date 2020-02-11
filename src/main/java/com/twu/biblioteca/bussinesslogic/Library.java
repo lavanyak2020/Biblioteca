@@ -1,9 +1,11 @@
 package com.twu.biblioteca.bussinesslogic;
 
+import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
+import com.twu.biblioteca.bussinesslogic.execption.BookIsNotAvailable;
+import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.twu.biblioteca.consoleInterface.Message.*;
 
 public class Library {
     private List<Book> books;
@@ -28,21 +30,27 @@ public class Library {
         return availableBooks;
     }
 
-    public String checkoutBook(Book book) {
+    public void checkoutBook(Book book) throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
+        if (!isBelongToLibrary(book)) {
+            throw new BookDoesNotBelongToLibrary();
+        }
         if (book != null && isAvailable(book)) {
             availableBooks.remove(book);
-            return CHECKOUT_SUCCESS_MESSAGE;
+            return;
         }
-        return CHECKOUT_UNSUCCESS_MESSAGE;
+        throw new BookIsNotAvailable();
     }
 
 
-    public String returnBook(Book book) {
-        if (book != null && !isAvailable(book) && isBelongToLibrary(book)) {
-            availableBooks.add(book);
-            return RETURN_SUCCESS_MESSAGE;
+    public void returnBook(Book book) throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
+        if (!isBelongToLibrary(book)) {
+            throw new BookDoesNotBelongToLibrary();
         }
-        return RETURN_UNSUCCESS_MESSAGE;
+        if (book != null && !isAvailable(book)) {
+            availableBooks.add(book);
+            return;
+        }
+        throw new BookIsNotCheckout();
     }
 
     private boolean isBelongToLibrary(Book book) {
@@ -52,4 +60,5 @@ public class Library {
     private boolean isAvailable(Book book) {
         return availableBooks.contains(book);
     }
+
 }
