@@ -40,9 +40,15 @@ public class AppUI {
         System.exit(0);
     }
 
-    public String getBookNameFromUser() {
+    public Book getBookFromUser() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter Book name:");
-        return scan.nextLine();
+        String userOption = scan.nextLine();
+
+        return getBookByName();
+    }
+
+    private Book getBookByName() {
+        return null;
     }
 }

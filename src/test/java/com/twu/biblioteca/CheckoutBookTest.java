@@ -11,12 +11,13 @@ class CheckoutBookTest {
     public void shouldCheckoutBook() {
         Library library = mock(Library.class);
         AppUI appUI = mock(AppUI.class);
-        when(appUI.getBookNameFromUser()).thenReturn("Quantitative aptitude");
+        Book book = mock(Book.class);
+        when(appUI.getBookFromUser()).thenReturn(book);
         CheckoutBook checkoutBookOption = CheckoutBook.createCheckoutBookOption(library, appUI);
 
         checkoutBookOption.execute();
 
-        verify(library, times(1)).checkoutBook("Quantitative aptitude");
+        verify(library, times(1)).checkoutBook(book);
     }
 
 }

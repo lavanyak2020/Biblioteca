@@ -12,11 +12,12 @@ class ReturnBookTest {
     public void shouldReturnBook() {
         Library library = mock(Library.class);
         AppUI appUI = mock(AppUI.class);
-        when(appUI.getBookNameFromUser()).thenReturn("Quantitative aptitude");
+        Book book = mock(Book.class);
+        when(appUI.getBookFromUser()).thenReturn(book);
         ReturnBook returnBookOption = ReturnBook.createReturnBookOption(library, appUI);
 
         returnBookOption.execute();
 
-        verify(library, times(1)).returnBook("Quantitative aptitude");
+        verify(library, times(1)).returnBook(book);
     }
 }

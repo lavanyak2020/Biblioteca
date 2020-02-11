@@ -7,6 +7,7 @@ import static com.twu.biblioteca.Message.*;
 
 class Library {
     private List<Book> books;
+    private List<Book> availableBooks = new ArrayList<>();
 
     Library() {
         init();
@@ -18,43 +19,33 @@ class Library {
         Book book3 = new Book("Alchemist", "Paulo Coelho", 1990);
 
         books = List.of(book1, book2, book3);
+        availableBooks.add(book1);
+        availableBooks.add(book2);
+        availableBooks.add(book3);
     }
 
     public List<Book> getBooks() {
-        List<Book> availableBooks = new ArrayList<>();
-
-        for (Book book : books) {
-            if (book.isAvailable()) {
-                availableBooks.add(book);
-            }
-        }
         return availableBooks;
     }
 
-    public String checkoutBook(String bookName) {
-        Book book = getBookByName(bookName);
-        if (book != null && book.isAvailable()) {
-            book.checkout();
+    public String checkoutBook(Book book) {
+        if (book != null && isAvailable(book)) {
+            availableBooks.remove(book);
             return CHECKOUT_SUCCESS_MESSAGE;
         }
         return CHECKOUT_UNSUCCESS_MESSAGE;
     }
 
-    public String returnBook(String bookName) {
-        Book book = getBookByName(bookName);
-        if (book != null && !book.isAvailable()) {
-            book.returned();
+
+    public String returnBook(Book book) {
+        if (book != null && !isAvailable(book)) {
+            availableBooks.add(book);
             return RETURN_SUCCESS_MESSAGE;
         }
         return RETURN_UNSUCCESS_MESSAGE;
     }
 
-    private Book getBookByName(String bookName) {
-        for (Book book : books) {
-            if (book.getName().equalsIgnoreCase(bookName)) {
-                return book;
-            }
-        }
-        return null;
+    private boolean isAvailable(Book book) {
+        return availableBooks.contains(book);
     }
 }

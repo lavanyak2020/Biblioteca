@@ -22,7 +22,7 @@ class MenuTest {
         MenuOption quit = QuitOption.createQuitOption(appUI);
         Menu menu = new Menu(library, appUI);
 
-        assertThat(menu.getMenuOption(), is(equalTo(List.of(listOfBooks,quit))));
+        assertThat(menu.menuOptions(), is(equalTo(List.of(listOfBooks, checkout, returnBook, quit))));
     }
 
     @Test
@@ -30,7 +30,7 @@ class MenuTest {
         Library library = mock(Library.class);
         AppUI appUI = mock(AppUI.class);
         Menu menu = new Menu(library, appUI);
-        MenuOption listOfBooks = menu.getMenuOption().get(0);
+        MenuOption listOfBooks = menu.menuOptions().get(0);
 
         menu.executeOption(0);
 

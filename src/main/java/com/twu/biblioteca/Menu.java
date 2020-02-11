@@ -21,7 +21,7 @@ public class Menu {
         this.appUI = appUI;
     }
 
-    public List<MenuOption> getMenuOption() {
+    public List<MenuOption> menuOptions() {
         return options;
     }
 

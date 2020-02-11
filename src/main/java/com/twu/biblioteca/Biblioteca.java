@@ -20,7 +20,7 @@ public class Biblioteca {
     }
 
     public List<MenuOption> getMenuItems() {
-        return menu.getMenuOption();
+        return menu.menuOptions();
     }
 
     public void execute(int userInput) {

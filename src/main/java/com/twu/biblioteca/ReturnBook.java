@@ -20,8 +20,8 @@ public class ReturnBook extends MenuOption {
 
     @Override
     public void execute() {
-        String bookName = appUI.getBookNameFromUser();
-        String message = library.returnBook(bookName);
+        Book book = appUI.getBookFromUser();
+        String message = library.returnBook(book);
         appUI.displayMessage(message);
     }
 }
