@@ -31,10 +31,10 @@ public class Library {
     }
 
     public void checkoutBook(Book book) throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
-        if (!isBelongToLibrary(book)) {
+        if (!isBelongToLibrary(book) || book == null) {
             throw new BookDoesNotBelongToLibrary();
         }
-        if (book != null && isAvailable(book)) {
+        if (isAvailable(book)) {
             availableBooks.remove(book);
             return;
         }
@@ -43,10 +43,10 @@ public class Library {
 
 
     public void returnBook(Book book) throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
-        if (!isBelongToLibrary(book)) {
+        if (!isBelongToLibrary(book) || book == null) {
             throw new BookDoesNotBelongToLibrary();
         }
-        if (book != null && !isAvailable(book)) {
+        if (!isAvailable(book)) {
             availableBooks.add(book);
             return;
         }
