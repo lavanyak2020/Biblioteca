@@ -17,6 +17,8 @@ class MenuTest {
         Library library = mock(Library.class);
         AppUI appUI = mock(AppUI.class);
         MenuOption listOfBooks = ListOfBook.createListOfBooksOption(library, appUI);
+        MenuOption checkout = CheckoutBook.createCheckoutBookOption(library, appUI);
+        MenuOption returnBook = ReturnBook.createReturnBookOption(library, appUI);
         MenuOption quit = QuitOption.createQuitOption(appUI);
         Menu menu = new Menu(library, appUI);
 

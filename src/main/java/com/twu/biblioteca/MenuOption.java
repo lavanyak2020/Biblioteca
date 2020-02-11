@@ -6,11 +6,6 @@ public abstract class MenuOption {
     protected String name;
     protected AppUI appUI;
 
-    public MenuOption(String name, AppUI appUI) {
-        this.name = name;
-        this.appUI = appUI;
-    }
-
     protected MenuOption() {
 
     }
