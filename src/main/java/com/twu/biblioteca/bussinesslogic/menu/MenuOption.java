@@ -1,13 +1,12 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.bussinesslogic.menu;
 
-import UI.AppUI;
+import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 
 public abstract class MenuOption {
     protected String name;
-    protected AppUI appUI;
+    protected PresentationInterface presentationInterface;
 
     protected MenuOption() {
-
     }
 
     public String getName() {

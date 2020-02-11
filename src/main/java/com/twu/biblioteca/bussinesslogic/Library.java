@@ -1,15 +1,15 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.bussinesslogic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.twu.biblioteca.Message.*;
+import static com.twu.biblioteca.consoleInterface.Message.*;
 
-class Library {
+public class Library {
     private List<Book> books;
     private List<Book> availableBooks = new ArrayList<>();
 
-    Library() {
+    public Library() {
         init();
     }
 
@@ -38,11 +38,15 @@ class Library {
 
 
     public String returnBook(Book book) {
-        if (book != null && !isAvailable(book)) {
+        if (book != null && !isAvailable(book) && isBelongToLibrary(book)) {
             availableBooks.add(book);
             return RETURN_SUCCESS_MESSAGE;
         }
         return RETURN_UNSUCCESS_MESSAGE;
+    }
+
+    private boolean isBelongToLibrary(Book book) {
+        return books.contains(book);
     }
 
     private boolean isAvailable(Book book) {

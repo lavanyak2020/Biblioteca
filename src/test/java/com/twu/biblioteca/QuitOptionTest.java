@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
-import UI.AppUI;
+import com.twu.biblioteca.consoleInterface.ConsoleInterface;
+import com.twu.biblioteca.bussinesslogic.menu.QuitOption;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
@@ -9,7 +10,7 @@ class QuitOptionTest {
 
     @Test
     public void shouldInvokeQuitApplicationWhenExecuted() {
-        AppUI appUI = mock(AppUI.class);
+        ConsoleInterface appUI = mock(ConsoleInterface.class);
         QuitOption quitOption = QuitOption.createQuitOption(appUI);
 
         quitOption.execute();

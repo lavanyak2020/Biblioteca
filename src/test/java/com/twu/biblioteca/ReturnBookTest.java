@@ -1,6 +1,9 @@
 package com.twu.biblioteca;
 
-import UI.AppUI;
+import com.twu.biblioteca.consoleInterface.ConsoleInterface;
+import com.twu.biblioteca.bussinesslogic.Book;
+import com.twu.biblioteca.bussinesslogic.Library;
+import com.twu.biblioteca.bussinesslogic.menu.ReturnBook;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
@@ -11,7 +14,7 @@ class ReturnBookTest {
     @Test
     public void shouldReturnBook() {
         Library library = mock(Library.class);
-        AppUI appUI = mock(AppUI.class);
+        ConsoleInterface appUI = mock(ConsoleInterface.class);
         Book book = mock(Book.class);
         when(appUI.getBookFromUser()).thenReturn(book);
         ReturnBook returnBookOption = ReturnBook.createReturnBookOption(library, appUI);
