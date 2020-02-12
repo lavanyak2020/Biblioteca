@@ -2,6 +2,7 @@ package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Movie;
+import com.twu.biblioteca.bussinesslogic.User;
 import com.twu.biblioteca.bussinesslogic.execption.*;
 import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
@@ -14,6 +15,7 @@ import static com.twu.biblioteca.consoleInterface.Message.*;
 public class ConsoleInterface implements PresentationInterface {
     private List<Book> books;
     private List<Movie> movies;
+    private User currentUser;
 
     public ConsoleInterface(List<Book> books, List<Movie> movies) {
         this.books = books;
@@ -122,6 +124,28 @@ public class ConsoleInterface implements PresentationInterface {
     @Override
     public void showMovieReturnSuccess() {
         displayMessage(RETURN_MOVIE_SUCCESS_MESSAGE);
+    }
+
+    @Override
+    public String[] getLoginDetails() {
+        String[] loginDetails = new String[2];
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter Library number:");
+        loginDetails[0] = scan.next();
+        System.out.println("Enter password:");
+        loginDetails[1] = scan.next();
+        return loginDetails;
+    }
+
+    @Override
+    public void showSuccessLogin(User user) {
+        System.out.println("Login Successfully");
+        currentUser = user;
+    }
+
+    @Override
+    public void showUnsuccessLogin() {
+        System.out.println("Invalid Library number and password");
     }
 
     private Movie getMovieByName(String movieName) {

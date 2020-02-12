@@ -21,4 +21,10 @@ public interface PresentationInterface {
     void showMovieCheckoutSuccess();
 
     void showMovieReturnSuccess();
+
+    String[] getLoginDetails();
+
+    void showSuccessLogin(User user);
+
+    void showUnsuccessLogin();
 }
