@@ -21,6 +21,6 @@ class ListOfBookTest {
 
         listOfBookOption.execute();
 
-        verify(library, times(1)).getBooks();
+        verify(library, times(1)).getAvailableBooks();
     }
 }
