@@ -79,7 +79,7 @@ public class ConsoleInterface implements PresentationInterface {
     public void listOfMovies(List<Movie> movies) {
         System.out.println("--------------------------------------------------------------------");
         for (Movie movie : movies) {
-            System.out.println(movie.getName() + "\t\t" + movie.getDirectorName() + "\t\t" + movie.getReleaseYear());
+            System.out.println(movie.getName() + "\t\t" + movie.getDirectorName() + "\t\t" + movie.getReleaseYear() + "\t\t" + movie.getRating());
             System.out.println("--------------------------------------------------------------------");
         }
     }
