@@ -32,4 +32,6 @@ public interface PresentationInterface {
     void showCheckoutBooksList(HashMap<Book, User> userCheckOutBookList);
 
     User getUser();
+
+    void showCheckoutMoviesList(HashMap<Movie, User> userCheckOutMovieList);
 }

@@ -153,13 +153,23 @@ public class ConsoleInterface implements PresentationInterface {
 
         for (Book book : books) {
             User user = userCheckOutBookList.get(book);
-            System.out.println(book.getName()+"\t\t"+user.getName());
+            System.out.println(book.getName() + "\t\t" + user.getName());
         }
     }
 
     @Override
     public User getUser() {
         return currentUser;
+    }
+
+    @Override
+    public void showCheckoutMoviesList(HashMap<Movie, User> userCheckOutMovieList) {
+        Set<Movie> movies = userCheckOutMovieList.keySet();
+
+        for (Movie movie : movies) {
+            User user = userCheckOutMovieList.get(movie);
+            System.out.println(movie.getName() + "\t\t" + user.getName());
+        }
     }
 
     private Movie getMovieByName(String movieName) {

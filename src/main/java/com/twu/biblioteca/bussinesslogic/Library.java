@@ -81,6 +81,10 @@ public class Library {
         return userCheckOutBookList;
     }
 
+    public HashMap<Movie, User> getUserCheckOutMovieList() {
+        return userCheckOutMovieList;
+    }
+
     private boolean isBelongToLibrary(Book book) {
         return books.contains(book);
     }
