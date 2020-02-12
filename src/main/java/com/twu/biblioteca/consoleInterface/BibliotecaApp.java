@@ -19,6 +19,7 @@ public class BibliotecaApp {
     private static LoginOption loginOption;
     private static QuitOption quitOption;
     private static CheckoutBook checkoutBookOption;
+    private static UserProfile userProfileOption;
     private static CheckoutMovie checkoutMovieOption;
     private static ReturnBook returnBookOption;
     private static ReturnMovie returnMovieOption;
@@ -56,6 +57,7 @@ public class BibliotecaApp {
                         showCheckoutBookDetailsOption,
                         showCheckoutMoviesDetailsOption,
                         logoutOption,
+                        userProfileOption,
                         quitOption
                 )
         );
@@ -69,6 +71,7 @@ public class BibliotecaApp {
                         returnBookOption,
                         returnMovieOption,
                         logoutOption,
+                        userProfileOption,
                         quitOption
                 )
         );
@@ -103,5 +106,6 @@ public class BibliotecaApp {
         showCheckoutBookDetailsOption = new ShowCheckoutBookDetails(library, appUI);
         showCheckoutMoviesDetailsOption = new ShowCheckoutMoviesDetails(library, appUI);
         logoutOption = new Logout(appUI);
+        userProfileOption = new UserProfile(appUI);
     }
 }

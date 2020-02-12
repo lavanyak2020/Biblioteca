@@ -178,6 +178,14 @@ public class ConsoleInterface implements PresentationInterface {
         System.out.println("...............Logout...........");
     }
 
+    @Override
+    public void showProfile(User user) {
+        System.out.println("Library number : "+user.getLibraryNumber());
+        System.out.println("Name : "+user.getName());
+        System.out.println("email : "+user.getEmail());
+        System.out.println("Phone number : "+user.getPhoneNumber());
+    }
+
     private Movie getMovieByName(String movieName) {
         for (Movie movie : movies) {
             if (movie.getName().equals(movieName)) {
