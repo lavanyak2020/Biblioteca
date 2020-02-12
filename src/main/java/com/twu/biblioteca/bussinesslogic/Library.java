@@ -30,7 +30,7 @@ public class Library {
     }
 
     public void checkoutBook(Book book, User user) throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
-        if (!isBelongToLibrary(book) || book == null) {
+        if (book == null || !isBelongToLibrary(book)) {
             throw new BookDoesNotBelongToLibrary();
         }
         if (isAvailable(book)) {
@@ -42,7 +42,7 @@ public class Library {
     }
 
     public void checkoutMovie(Movie movie, User user) throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
-        if (!isBelongToLibrary(movie) || movie == null) {
+        if (movie == null || !isBelongToLibrary(movie)) {
             throw new MovieDoesNotBelongToLibrary();
         }
         if (isAvailable(movie)) {
@@ -54,7 +54,7 @@ public class Library {
     }
 
     public void returnBook(Book book, User user) throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
-        if (!isBelongToLibrary(book) || book == null) {
+        if (book == null || !isBelongToLibrary(book)) {
             throw new BookDoesNotBelongToLibrary();
         }
         if (!isAvailable(book) && (userCheckOutBookList.get(book) == user)) {
@@ -66,7 +66,7 @@ public class Library {
     }
 
     public void returnMovie(Movie movie, User user) throws MovieIsNotCheckout, MovieDoesNotBelongToLibrary {
-        if (!isBelongToLibrary(movie) || movie == null) {
+        if (movie == null || !isBelongToLibrary(movie)) {
             throw new MovieDoesNotBelongToLibrary();
         }
         if (!isAvailable(movie) && (userCheckOutMovieList.get(movie) == user)) {
