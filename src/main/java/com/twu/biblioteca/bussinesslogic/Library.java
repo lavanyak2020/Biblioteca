@@ -1,9 +1,6 @@
 package com.twu.biblioteca.bussinesslogic;
 
-import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotAvailable;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
-import com.twu.biblioteca.bussinesslogic.execption.MovieIsNotAvailable;
+import com.twu.biblioteca.bussinesslogic.execption.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +37,15 @@ public class Library {
         throw new BookIsNotAvailable();
     }
 
-    public void checkoutMovie(Movie movie) throws MovieIsNotAvailable {
+    public void checkoutMovie(Movie movie) throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
+        if (!isBelongToLibrary(movie) || movie == null) {
+            throw new MovieDoesNotBelongToLibrary();
+        }
         if (isAvailable(movie)) {
             availableMovies.remove(movie);
             return;
         }
         throw new MovieIsNotAvailable();
-    }
-
-    private boolean isAvailable(Movie movie) {
-        return availableMovies.contains(movie);
     }
 
     public void returnBook(Book book) throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
@@ -71,7 +67,15 @@ public class Library {
         return books.contains(book);
     }
 
+    private boolean isBelongToLibrary(Movie movie) {
+        return movies.contains(movie);
+    }
+
     private boolean isAvailable(Book book) {
         return availableBooks.contains(book);
+    }
+
+    private boolean isAvailable(Movie movie) {
+        return availableMovies.contains(movie);
     }
 }

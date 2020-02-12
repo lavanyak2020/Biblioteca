@@ -3,10 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.Movie;
-import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotAvailable;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
-import com.twu.biblioteca.bussinesslogic.execption.MovieIsNotAvailable;
+import com.twu.biblioteca.bussinesslogic.execption.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -90,7 +87,7 @@ class LibraryTest {
         }
 
         @Test
-        public void shouldCheckoutMovieIfItIsAvailable() throws MovieIsNotAvailable {
+        public void shouldCheckoutMovieIfItIsAvailable() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
             Library library = new Library(books, movies);
             Movie movieForCheckout = movies.get(0);
 
@@ -100,12 +97,20 @@ class LibraryTest {
         }
 
         @Test
-        public void shouldThrowExceptionWhileCheckoutingUnavailableBook() throws MovieIsNotAvailable {
+        public void shouldThrowExceptionWhileCheckoutingUnavailableBook() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
             Library library = new Library(books, movies);
             Movie movieForCheckout = movies.get(0);
             library.checkoutMovie(movieForCheckout);
 
             assertThrows(MovieIsNotAvailable.class, () -> library.checkoutMovie(movieForCheckout));
+        }
+
+        @Test
+        public void shouldThrowExceptionWhileCheckoutingInvalidBookThatDoesNotBelongLibrary() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
+            Library library = new Library(books, movies);
+            Movie movieForCheckout = mock(Movie.class);
+
+            assertThrows(MovieDoesNotBelongToLibrary.class, () -> library.checkoutMovie(movieForCheckout));
         }
     }
 }
