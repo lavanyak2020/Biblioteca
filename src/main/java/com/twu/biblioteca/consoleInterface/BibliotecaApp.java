@@ -15,7 +15,11 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.library = new Library();
+        Book book1 = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
+        Book book2 = new Book("Beauty", " Sheri S. Tepper", 1991);
+        Book book3 = new Book("Alphabet of Thorn", "Patricia McKillip", 2004);
+        List<Book> books = List.of(book1, book2, book3);
+        bibliotecaApp.library = new Library(books, List.of());
         bibliotecaApp.appUI = new ConsoleInterface(bibliotecaApp.library.getAllBooks());
         bibliotecaApp.start();
     }

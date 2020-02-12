@@ -39,7 +39,6 @@ public class ConsoleInterface implements PresentationInterface {
             displayMessage("Invalid Option");
             return;
         }
-        System.out.println("fff");
         MenuOption selectedOption = menuOptions.get(optionIndex);
         try {
             selectedOption.execute();

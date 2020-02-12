@@ -8,22 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private List<Book> books;
-    private List<Book> availableBooks = new ArrayList<>();
+    private final List<Book> books;
+    private final List<Movie> movies;
+    private final List<Book> availableBooks = new ArrayList<>();
+    private List<Movie> availableMovies = new ArrayList<>();
 
-    public Library() {
-        init();
-    }
-
-    private void init() {
-        Book book1 = new Book("Quantitative Aptitude", "RS Agarwal", 2008);
-        Book book2 = new Book("Head First Java", "Bert Bates, Kathy Sierra", 2005);
-        Book book3 = new Book("Alchemist", "Paulo Coelho", 1990);
-
-        books = List.of(book1, book2, book3);
-        availableBooks.add(book1);
-        availableBooks.add(book2);
-        availableBooks.add(book3);
+    public Library(List<Book> books, List<Movie> movies) {
+        this.books = books;
+        this.movies = movies;
+        for(Book book : books){
+            availableBooks.add(book);
+        }
+        for(Movie movie : movies){
+            availableMovies.add(movie);
+        }
     }
 
     public List<Book> getBooks() {
@@ -65,4 +63,7 @@ public class Library {
         return availableBooks.contains(book);
     }
 
+    public List<Movie> getAvailableMovies() {
+        return availableMovies;
+    }
 }
