@@ -25,7 +25,7 @@ public class CheckoutBook extends MenuOption {
     @Override
     public void execute() throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
         Book book = presentationInterface.getBookFromUser();
-        library.checkoutBook(book);
+        library.checkoutBook(book, null);
         presentationInterface.showCheckoutSuccess();
     }
 }

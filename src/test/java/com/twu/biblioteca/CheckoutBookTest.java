@@ -22,7 +22,7 @@ class CheckoutBookTest {
 
         checkoutBookOption.execute();
 
-        verify(library, times(1)).checkoutBook(book);
+        verify(library, times(1)).checkoutBook(book, null);
     }
 
 }

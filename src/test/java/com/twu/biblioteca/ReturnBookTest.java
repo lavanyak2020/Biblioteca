@@ -23,6 +23,6 @@ class ReturnBookTest {
 
         returnBookOption.execute();
 
-        verify(library, times(1)).returnBook(book);
+        verify(library, times(1)).returnBook(book, null);
     }
 }

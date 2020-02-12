@@ -25,7 +25,7 @@ public class ReturnBook extends MenuOption {
     @Override
     public void execute() throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
         Book book = presentationInterface.getBookFromUser();
-        library.returnBook(book);
+        library.returnBook(book, null);
         presentationInterface.showReturnSuccess();
     }
 }

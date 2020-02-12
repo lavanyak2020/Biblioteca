@@ -18,7 +18,7 @@ public class CheckoutMovie extends MenuOption {
     @Override
     public void execute() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
         Movie movie = presentationInterface.getMovieFromUser();
-        library.checkoutMovie(movie);
+        library.checkoutMovie(movie, null);
         presentationInterface.showMovieCheckoutSuccess();
     }
 }
