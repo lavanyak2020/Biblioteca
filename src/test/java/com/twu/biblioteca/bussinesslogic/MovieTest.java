@@ -10,17 +10,18 @@ class MovieTest {
 
     @Test
     public void shouldReturnDetailsOfTheMovie() {
-        Movie movie = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020);
+        Movie movie = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020, 10);
 
         assertThat(movie.getName(), is(equalTo("Ala Vaikunta Puramlo")));
         assertThat(movie.getDirectorName(), is(equalTo("Trivikram Srinivas")));
         assertThat(movie.getReleaseYear(), is(equalTo(2020)));
+        assertThat(movie.getRating(), is(equalTo(10.0f)));
     }
 
     @Test
     public void shouldEquateTwoSameMovies() {
-        Movie movie1 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020);
-        Movie movie2 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020);
+        Movie movie1 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020, 0);
+        Movie movie2 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020, 0);
 
         assertThat(movie1, is(equalTo(movie2)));
     }

@@ -19,7 +19,11 @@ public class BibliotecaApp {
         Book book2 = new Book("Beauty", " Sheri S. Tepper", 1991);
         Book book3 = new Book("Alphabet of Thorn", "Patricia McKillip", 2004);
         List<Book> books = List.of(book1, book2, book3);
-        bibliotecaApp.library = new Library(books, List.of());
+        Movie movie1 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020, 10);
+        Movie movie2 = new Movie("Sarileru Neekevaru", "Anil Ravipudi", 2020, 5);
+        Movie movie3 = new Movie("Jaanu", "Prem Kumar", 2020, 8);
+        List<Movie> movies = List.of(movie1, movie2, movie3);
+        bibliotecaApp.library = new Library(books, movies);
         bibliotecaApp.appUI = new ConsoleInterface(bibliotecaApp.library.getAllBooks());
         bibliotecaApp.start();
     }
@@ -39,6 +43,7 @@ public class BibliotecaApp {
         menuOptions.add(ListBooks.createListOfBooksOption(library, appUI));
         menuOptions.add(CheckoutBook.createCheckoutBookOption(library, appUI));
         menuOptions.add(ReturnBook.createReturnBookOption(library, appUI));
+        menuOptions.add(new ListMovies(library, appUI));
         menuOptions.add(QuitOption.createQuitOption(appUI));
     }
 }

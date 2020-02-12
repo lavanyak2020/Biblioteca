@@ -7,11 +7,13 @@ public class Movie {
     private final String name;
     private final String director;
     private final int releaseYear;
+    private final float rating;
 
-    public Movie(String name, String director, int releaseYear) {
+    public Movie(String name, String director, int releaseYear, float rating) {
         this.name = name;
         this.director = director;
         this.releaseYear = releaseYear;
+        this.rating = rating;
     }
 
     public String getName() {
@@ -39,5 +41,9 @@ public class Movie {
     @Override
     public int hashCode() {
         return Objects.hash(name, director, releaseYear);
+    }
+
+    public float getRating() {
+        return rating;
     }
 }
