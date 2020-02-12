@@ -16,4 +16,12 @@ class MovieTest {
         assertThat(movie.getDirectorName(), is(equalTo("Trivikram Srinivas")));
         assertThat(movie.getReleaseYear(), is(equalTo(2020)));
     }
+
+    @Test
+    public void shouldEquateTwoSameMovies() {
+        Movie movie1 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020);
+        Movie movie2 = new Movie("Ala Vaikunta Puramlo", "Trivikram Srinivas", 2020);
+
+        assertThat(movie1, is(equalTo(movie2)));
+    }
 }
