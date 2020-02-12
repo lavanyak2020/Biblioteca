@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 class ListBooksTest {
 
     @Test
-    public void shouldSendListOfBooksFromLibraryToUI() throws BookIsNotAvailable, BookIsNotCheckout, BookDoesNotBelongToLibrary, MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
+    public void shouldSendListOfBooksFromLibraryToUI() throws BookIsNotAvailable, BookIsNotCheckout, BookDoesNotBelongToLibrary, MovieIsNotAvailable, MovieDoesNotBelongToLibrary, MovieIsNotCheckout {
         Library library = mock(Library.class);
         ConsoleInterface appUI = mock(ConsoleInterface.class);
         MenuOption listOfBookOption = createListOfBooksOption(library,appUI);
