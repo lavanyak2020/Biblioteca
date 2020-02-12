@@ -19,4 +19,6 @@ public interface PresentationInterface {
     Movie getMovieFromUser();
 
     void showMovieCheckoutSuccess();
+
+    void showMovieReturnSuccess();
 }

@@ -53,6 +53,8 @@ public class ConsoleInterface implements PresentationInterface {
             movieDoesNotBelongToLibrary.printStackTrace();
         } catch (MovieIsNotAvailable movieIsNotAvailable) {
             displayMessage(CHECKOUT_MOVIE_UNSUCCESS_MESSAGE);
+        } catch (MovieIsNotCheckout movieIsNotCheckout) {
+            displayMessage(RETURN_MOVIE_UNSUCCESS_MESSAGE);
         }
     }
 
@@ -117,9 +119,13 @@ public class ConsoleInterface implements PresentationInterface {
         displayMessage(RETURN_SUCCESS_MESSAGE);
     }
 
+    @Override
+    public void showMovieReturnSuccess() {
+        displayMessage(RETURN_MOVIE_SUCCESS_MESSAGE);
+    }
+
     private Movie getMovieByName(String movieName) {
         for (Movie movie : movies) {
-            System.out.println(movie.getName());
             if (movie.getName().equals(movieName)) {
                 return movie;
             }

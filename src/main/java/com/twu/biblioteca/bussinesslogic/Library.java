@@ -59,7 +59,10 @@ public class Library {
         throw new BookIsNotCheckout();
     }
 
-    public void returnMovie(Movie movie) throws MovieIsNotCheckout {
+    public void returnMovie(Movie movie) throws MovieIsNotCheckout, MovieDoesNotBelongToLibrary {
+        if (!isBelongToLibrary(movie) || movie == null) {
+            throw new MovieDoesNotBelongToLibrary();
+        }
         if(!isAvailable(movie)) {
             availableMovies.add(movie);
             return;

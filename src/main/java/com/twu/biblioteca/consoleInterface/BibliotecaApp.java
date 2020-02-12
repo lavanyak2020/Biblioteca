@@ -45,6 +45,7 @@ public class BibliotecaApp {
         menuOptions.add(CheckoutBook.createCheckoutBookOption(library, appUI));
         menuOptions.add(new CheckoutMovie(library, appUI));
         menuOptions.add(ReturnBook.createReturnBookOption(library, appUI));
+        menuOptions.add(new ReturnMovie(library, appUI));
         menuOptions.add(QuitOption.createQuitOption(appUI));
     }
 }

@@ -14,5 +14,5 @@ public abstract class MenuOption {
         return name;
     }
 
-    public abstract void execute() throws BookDoesNotBelongToLibrary, BookIsNotAvailable, BookIsNotCheckout, MovieIsNotAvailable, MovieDoesNotBelongToLibrary;
+    public abstract void execute() throws BookDoesNotBelongToLibrary, BookIsNotAvailable, BookIsNotCheckout, MovieIsNotAvailable, MovieDoesNotBelongToLibrary, MovieIsNotCheckout;
 }
