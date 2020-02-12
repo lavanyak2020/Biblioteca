@@ -106,11 +106,30 @@ class LibraryTest {
         }
 
         @Test
-        public void shouldThrowExceptionWhileCheckoutingInvalidBookThatDoesNotBelongLibrary() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
+        public void shouldThrowExceptionWhileCheckoutingInvalidBookThatDoesNotBelongLibrary() {
             Library library = new Library(books, movies);
             Movie movieForCheckout = mock(Movie.class);
 
             assertThrows(MovieDoesNotBelongToLibrary.class, () -> library.checkoutMovie(movieForCheckout));
+        }
+
+        @Test
+        public void shouldReturnMovieIfItIsCheckout() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary, MovieIsNotCheckout {
+            Library library = new Library(books, movies);
+            Movie movieForCheckout = movies.get(0);
+            library.checkoutMovie(movieForCheckout);
+
+            library.returnMovie(movieForCheckout);
+
+            assertEquals(library.getAvailableMovies(), List.of(movies.get(1), movies.get(2), movies.get(0)));
+        }
+
+        @Test
+        public void shouldThrowExceptionWhileReturningUnCheckoutBook() {
+            Library library = new Library(books, movies);
+            Movie movieForCheckout = movies.get(0);
+
+            assertThrows(MovieIsNotCheckout.class, () -> library.returnMovie(movieForCheckout));
         }
     }
 }
