@@ -2,9 +2,7 @@ package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Movie;
-import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotAvailable;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
+import com.twu.biblioteca.bussinesslogic.execption.*;
 import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 
@@ -14,10 +12,12 @@ import java.util.Scanner;
 import static com.twu.biblioteca.consoleInterface.Message.*;
 
 public class ConsoleInterface implements PresentationInterface {
-    List<Book> books;
+    private List<Book> books;
+    private List<Movie> movies;
 
-    public ConsoleInterface(List<Book> books) {
+    public ConsoleInterface(List<Book> books, List<Movie> movies) {
         this.books = books;
+        this.movies = movies;
     }
 
     public void displayMenu(List<MenuOption> menuItems) {
@@ -49,6 +49,10 @@ public class ConsoleInterface implements PresentationInterface {
             displayMessage(CHECKOUT_UNSUCCESS_MESSAGE);
         } catch (BookIsNotCheckout bookIsNotCheckout) {
             displayMessage(RETURN_UNSUCCESS_MESSAGE);
+        } catch (MovieDoesNotBelongToLibrary movieDoesNotBelongToLibrary) {
+            movieDoesNotBelongToLibrary.printStackTrace();
+        } catch (MovieIsNotAvailable movieIsNotAvailable) {
+            displayMessage(CHECKOUT_MOVIE_UNSUCCESS_MESSAGE);
         }
     }
 
@@ -90,13 +94,37 @@ public class ConsoleInterface implements PresentationInterface {
     }
 
     @Override
+    public Movie getMovieFromUser() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter Movie name:");
+        String bookName = scan.nextLine();
+
+        return getMovieByName(bookName);
+    }
+
+    @Override
     public void showCheckoutSuccess() {
         displayMessage(CHECKOUT_SUCCESS_MESSAGE);
     }
 
     @Override
+    public void showMovieCheckoutSuccess() {
+        displayMessage(CHECKOUT_MOVIE_SUCCESS_MESSAGE);
+    }
+
+    @Override
     public void showReturnSuccess() {
         displayMessage(RETURN_SUCCESS_MESSAGE);
+    }
+
+    private Movie getMovieByName(String movieName) {
+        for (Movie movie : movies) {
+            System.out.println(movie.getName());
+            if (movie.getName().equals(movieName)) {
+                return movie;
+            }
+        }
+        return null;
     }
 
     private Book getBookByName(String bookName) {

@@ -24,7 +24,7 @@ public class BibliotecaApp {
         Movie movie3 = new Movie("Jaanu", "Prem Kumar", 2020, 8);
         List<Movie> movies = List.of(movie1, movie2, movie3);
         bibliotecaApp.library = new Library(books, movies);
-        bibliotecaApp.appUI = new ConsoleInterface(bibliotecaApp.library.getAllBooks());
+        bibliotecaApp.appUI = new ConsoleInterface(books, movies);
         bibliotecaApp.start();
     }
 
@@ -41,9 +41,10 @@ public class BibliotecaApp {
     private void initializeMenu(Library library, ConsoleInterface appUI) {
         menuOptions = new ArrayList<>();
         menuOptions.add(ListBooks.createListOfBooksOption(library, appUI));
-        menuOptions.add(CheckoutBook.createCheckoutBookOption(library, appUI));
-        menuOptions.add(ReturnBook.createReturnBookOption(library, appUI));
         menuOptions.add(new ListMovies(library, appUI));
+        menuOptions.add(CheckoutBook.createCheckoutBookOption(library, appUI));
+        menuOptions.add(new CheckoutMovie(library, appUI));
+        menuOptions.add(ReturnBook.createReturnBookOption(library, appUI));
         menuOptions.add(QuitOption.createQuitOption(appUI));
     }
 }

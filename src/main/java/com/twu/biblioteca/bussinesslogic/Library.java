@@ -59,10 +59,6 @@ public class Library {
         throw new BookIsNotCheckout();
     }
 
-    public List<Book> getAllBooks() {
-        return books;
-    }
-
     private boolean isBelongToLibrary(Book book) {
         return books.contains(book);
     }
