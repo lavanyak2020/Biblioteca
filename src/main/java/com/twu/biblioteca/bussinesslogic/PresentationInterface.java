@@ -13,4 +13,6 @@ public interface PresentationInterface {
     void showCheckoutSuccess();
 
     void showReturnSuccess();
+
+    void listOfMovies(List<Movie> movies);
 }

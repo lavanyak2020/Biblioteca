@@ -3,15 +3,15 @@ package com.twu.biblioteca.bussinesslogic.menu;
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 
-public class ListOfBook extends MenuOption {
+public class ListBooks extends MenuOption {
     private Library library;
-    private static final ListOfBook INSTANCE = new ListOfBook();
+    private static final ListBooks INSTANCE = new ListBooks();
 
-    private ListOfBook() {
+    private ListBooks() {
         super();
     }
 
-    public static ListOfBook createListOfBooksOption(Library library, PresentationInterface presentationInterface) {
+    public static ListBooks createListOfBooksOption(Library library, PresentationInterface presentationInterface) {
         INSTANCE.presentationInterface = presentationInterface;
         INSTANCE.library = library;
         INSTANCE.name = "List Of Books";

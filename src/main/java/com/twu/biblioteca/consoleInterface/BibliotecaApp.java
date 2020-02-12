@@ -36,7 +36,7 @@ public class BibliotecaApp {
 
     private void initializeMenu(Library library, ConsoleInterface appUI) {
         menuOptions = new ArrayList<>();
-        menuOptions.add(ListOfBook.createListOfBooksOption(library, appUI));
+        menuOptions.add(ListBooks.createListOfBooksOption(library, appUI));
         menuOptions.add(CheckoutBook.createCheckoutBookOption(library, appUI));
         menuOptions.add(ReturnBook.createReturnBookOption(library, appUI));
         menuOptions.add(QuitOption.createQuitOption(appUI));

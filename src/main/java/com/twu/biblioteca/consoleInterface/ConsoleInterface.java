@@ -1,6 +1,7 @@
 package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.Book;
+import com.twu.biblioteca.bussinesslogic.Movie;
 import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
 import com.twu.biblioteca.bussinesslogic.execption.BookIsNotAvailable;
 import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
@@ -66,6 +67,15 @@ public class ConsoleInterface implements PresentationInterface {
         System.out.println("--------------------------------------------------------------------");
         for (Book book : books) {
             System.out.println(book.getName() + "\t\t" + book.getAuthor() + "\t\t" + book.getPublicationYear());
+            System.out.println("--------------------------------------------------------------------");
+        }
+    }
+
+    @Override
+    public void listOfMovies(List<Movie> movies) {
+        System.out.println("--------------------------------------------------------------------");
+        for (Movie movie : movies) {
+            System.out.println(movie.getName() + "\t\t" + movie.getDirectorName() + "\t\t" + movie.getReleaseYear());
             System.out.println("--------------------------------------------------------------------");
         }
     }

@@ -8,10 +8,10 @@ import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
 import org.junit.jupiter.api.Test;
 
-import static com.twu.biblioteca.bussinesslogic.menu.ListOfBook.*;
+import static com.twu.biblioteca.bussinesslogic.menu.ListBooks.*;
 import static org.mockito.Mockito.*;
 
-class ListOfBookTest {
+class ListBooksTest {
 
     @Test
     public void shouldSendListOfBooksFromLibraryToUI() throws BookIsNotAvailable, BookIsNotCheckout, BookDoesNotBelongToLibrary {
