@@ -53,6 +53,7 @@ public class BibliotecaApp {
         menuOptions.add(new ShowCheckoutBookDetails(library, appUI));
         menuOptions.add(new ShowCheckoutMoviesDetails(library, appUI));
         menuOptions.add(new LoginOption(users, appUI));
+        menuOptions.add(new Logout(appUI));
         menuOptions.add(QuitOption.createQuitOption(appUI));
     }
 }

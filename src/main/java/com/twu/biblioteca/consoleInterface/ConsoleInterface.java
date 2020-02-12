@@ -172,6 +172,12 @@ public class ConsoleInterface implements PresentationInterface {
         }
     }
 
+    @Override
+    public void showSuccessLogOut() {
+        currentUser = null;
+        System.out.println("...............Logout...........");
+    }
+
     private Movie getMovieByName(String movieName) {
         for (Movie movie : movies) {
             if (movie.getName().equals(movieName)) {

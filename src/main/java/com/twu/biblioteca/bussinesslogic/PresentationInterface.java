@@ -34,4 +34,6 @@ public interface PresentationInterface {
     User getUser();
 
     void showCheckoutMoviesList(HashMap<Movie, User> userCheckOutMovieList);
+
+    void showSuccessLogOut();
 }
