@@ -3,6 +3,7 @@ package com.twu.biblioteca.bussinesslogic.menu;
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.Movie;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
+import com.twu.biblioteca.bussinesslogic.User;
 import com.twu.biblioteca.bussinesslogic.execption.MovieDoesNotBelongToLibrary;
 import com.twu.biblioteca.bussinesslogic.execption.MovieIsNotAvailable;
 
@@ -18,7 +19,8 @@ public class CheckoutMovie extends MenuOption {
     @Override
     public void execute() throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
         Movie movie = presentationInterface.getMovieFromUser();
-        library.checkoutMovie(movie, null);
+        User user = presentationInterface.getUser();
+        library.checkoutMovie(movie, user);
         presentationInterface.showMovieCheckoutSuccess();
     }
 }

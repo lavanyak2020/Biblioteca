@@ -1,5 +1,6 @@
 package com.twu.biblioteca.bussinesslogic;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface PresentationInterface {
@@ -27,4 +28,8 @@ public interface PresentationInterface {
     void showSuccessLogin(User user);
 
     void showUnsuccessLogin();
+
+    void showCheckoutBooksList(HashMap<Book, User> userCheckOutBookList);
+
+    User getUser();
 }

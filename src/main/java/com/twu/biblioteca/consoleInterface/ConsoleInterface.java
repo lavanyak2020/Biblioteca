@@ -7,8 +7,7 @@ import com.twu.biblioteca.bussinesslogic.execption.*;
 import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static com.twu.biblioteca.consoleInterface.Message.*;
 
@@ -146,6 +145,21 @@ public class ConsoleInterface implements PresentationInterface {
     @Override
     public void showUnsuccessLogin() {
         System.out.println("Invalid Library number and password");
+    }
+
+    @Override
+    public void showCheckoutBooksList(HashMap<Book, User> userCheckOutBookList) {
+        Set<Book> books = userCheckOutBookList.keySet();
+
+        for (Book book : books) {
+            User user = userCheckOutBookList.get(book);
+            System.out.println(book.getName()+"\t\t"+user.getName());
+        }
+    }
+
+    @Override
+    public User getUser() {
+        return currentUser;
     }
 
     private Movie getMovieByName(String movieName) {

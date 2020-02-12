@@ -12,6 +12,7 @@ public class BibliotecaApp {
     private ConsoleInterface appUI;
     private Library library;
     private List<MenuOption> menuOptions;
+    private List<User> users;
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -25,11 +26,14 @@ public class BibliotecaApp {
         List<Movie> movies = List.of(movie1, movie2, movie3);
         bibliotecaApp.library = new Library(books, movies);
         bibliotecaApp.appUI = new ConsoleInterface(books, movies);
+        User user = new User("123-0001", "1234", "lavanya", "lavanya@gmail.com", "8096724925",UserType.CUSTOMER);
+        bibliotecaApp.users = new ArrayList<>();
+        bibliotecaApp.users.add(user);
         bibliotecaApp.start();
     }
 
     private void start() {
-        initializeMenu(library, appUI);
+        initializeMenu();
         appUI.displayMessage(WELCOME_MESSAGE);
         do {
             appUI.displayMenu(menuOptions);
@@ -38,7 +42,7 @@ public class BibliotecaApp {
         } while (true);
     }
 
-    private void initializeMenu(Library library, ConsoleInterface appUI) {
+    private void initializeMenu() {
         menuOptions = new ArrayList<>();
         menuOptions.add(ListBooks.createListOfBooksOption(library, appUI));
         menuOptions.add(new ListMovies(library, appUI));
@@ -46,7 +50,8 @@ public class BibliotecaApp {
         menuOptions.add(new CheckoutMovie(library, appUI));
         menuOptions.add(ReturnBook.createReturnBookOption(library, appUI));
         menuOptions.add(new ReturnMovie(library, appUI));
-        menuOptions.add(new LoginOption(List.of(), appUI));
+        menuOptions.add(new ShowCheckoutBookDetails(library, appUI));
+        menuOptions.add(new LoginOption(users, appUI));
         menuOptions.add(QuitOption.createQuitOption(appUI));
     }
 }

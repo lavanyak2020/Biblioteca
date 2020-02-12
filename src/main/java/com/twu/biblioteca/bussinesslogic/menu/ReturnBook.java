@@ -3,6 +3,7 @@ package com.twu.biblioteca.bussinesslogic.menu;
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
+import com.twu.biblioteca.bussinesslogic.User;
 import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
 import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
 
@@ -25,7 +26,8 @@ public class ReturnBook extends MenuOption {
     @Override
     public void execute() throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
         Book book = presentationInterface.getBookFromUser();
-        library.returnBook(book, null);
+        User user = presentationInterface.getUser();
+        library.returnBook(book, user);
         presentationInterface.showReturnSuccess();
     }
 }
