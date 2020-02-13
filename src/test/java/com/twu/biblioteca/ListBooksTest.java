@@ -19,6 +19,6 @@ class ListBooksTest {
 
         listOfBookOption.execute();
 
-        verify(library, times(1)).getUserCheckOutItemList();
+        verify(library, times(1)).getAvailableItems();
     }
 }

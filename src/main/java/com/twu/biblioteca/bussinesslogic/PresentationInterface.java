@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PresentationInterface {
 
-    void listOfBooks(List<LibraryItem> books);
+    void listOfBooks(List<LibraryItem> items);
 
     void quitApplication();
 

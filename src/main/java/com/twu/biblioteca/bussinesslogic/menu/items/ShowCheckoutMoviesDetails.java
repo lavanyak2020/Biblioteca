@@ -1,8 +1,7 @@
-package com.twu.biblioteca.bussinesslogic.menu;
+package com.twu.biblioteca.bussinesslogic.menu.items;
 
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
-import com.twu.biblioteca.bussinesslogic.execption.*;
 
 public class ShowCheckoutMoviesDetails extends MenuOption {
     private final Library library;
