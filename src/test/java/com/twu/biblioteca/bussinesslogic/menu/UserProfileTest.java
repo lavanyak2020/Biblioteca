@@ -2,6 +2,7 @@ package com.twu.biblioteca.bussinesslogic.menu;
 
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 import com.twu.biblioteca.bussinesslogic.User;
+import com.twu.biblioteca.bussinesslogic.menu.items.UserProfile;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

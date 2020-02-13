@@ -1,7 +1,7 @@
 package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.*;
-import com.twu.biblioteca.bussinesslogic.menu.*;
+import com.twu.biblioteca.bussinesslogic.menu.items.*;
 
 import java.util.ArrayList;
 import java.util.List;

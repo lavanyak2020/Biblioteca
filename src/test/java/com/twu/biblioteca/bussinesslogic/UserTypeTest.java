@@ -1,7 +1,7 @@
 package com.twu.biblioteca.bussinesslogic;
 
-import com.twu.biblioteca.bussinesslogic.menu.ListBooks;
-import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
+import com.twu.biblioteca.bussinesslogic.menu.items.ListBooks;
+import com.twu.biblioteca.bussinesslogic.menu.items.MenuOption;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

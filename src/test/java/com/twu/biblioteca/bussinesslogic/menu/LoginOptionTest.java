@@ -2,6 +2,7 @@ package com.twu.biblioteca.bussinesslogic.menu;
 
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 import com.twu.biblioteca.bussinesslogic.User;
+import com.twu.biblioteca.bussinesslogic.menu.items.LoginOption;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

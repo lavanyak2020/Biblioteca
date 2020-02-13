@@ -1,6 +1,6 @@
 package com.twu.biblioteca.bussinesslogic;
 
-import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
+import com.twu.biblioteca.bussinesslogic.menu.items.MenuOption;
 
 import java.util.List;
 

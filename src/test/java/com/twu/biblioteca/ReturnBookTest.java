@@ -5,7 +5,7 @@ import com.twu.biblioteca.bussinesslogic.execption.ItemIsNotCheckout;
 import com.twu.biblioteca.consoleInterface.ConsoleInterface;
 import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Library;
-import com.twu.biblioteca.bussinesslogic.menu.ReturnBook;
+import com.twu.biblioteca.bussinesslogic.menu.items.ReturnBook;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

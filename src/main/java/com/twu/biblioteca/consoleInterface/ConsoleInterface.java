@@ -2,8 +2,8 @@ package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.*;
 import com.twu.biblioteca.bussinesslogic.execption.*;
-import com.twu.biblioteca.bussinesslogic.menu.CheckoutMovie;
-import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
+import com.twu.biblioteca.bussinesslogic.menu.items.CheckoutMovie;
+import com.twu.biblioteca.bussinesslogic.menu.items.MenuOption;
 
 import java.util.*;
 

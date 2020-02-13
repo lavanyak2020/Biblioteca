@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.consoleInterface.ConsoleInterface;
-import com.twu.biblioteca.bussinesslogic.menu.QuitOption;
+import com.twu.biblioteca.bussinesslogic.menu.items.QuitOption;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

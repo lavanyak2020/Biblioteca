@@ -4,7 +4,7 @@ import com.twu.biblioteca.bussinesslogic.execption.ItemDoesNotBelongToLibrary;
 import com.twu.biblioteca.bussinesslogic.execption.ItemIsNotAvailable;
 import com.twu.biblioteca.consoleInterface.ConsoleInterface;
 import com.twu.biblioteca.bussinesslogic.Book;
-import com.twu.biblioteca.bussinesslogic.menu.CheckoutBook;
+import com.twu.biblioteca.bussinesslogic.menu.items.CheckoutBook;
 import com.twu.biblioteca.bussinesslogic.Library;
 import org.junit.jupiter.api.Test;
 
