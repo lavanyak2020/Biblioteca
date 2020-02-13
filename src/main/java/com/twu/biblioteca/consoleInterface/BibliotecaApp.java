@@ -2,6 +2,9 @@ package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.*;
 import com.twu.biblioteca.bussinesslogic.menu.items.*;
+import com.twu.biblioteca.bussinesslogic.menu.menulist.CustomerMenuList;
+import com.twu.biblioteca.bussinesslogic.menu.menulist.DefaultMenuList;
+import com.twu.biblioteca.bussinesslogic.menu.menulist.LibrarianMenuList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +17,6 @@ public class BibliotecaApp {
     private Library library;
     private List<MenuOption> defaultMenuOptions = new ArrayList<>();
     private List<User> users;
-    private static ListBooks listBooksOption;
-    private static ListMovies listMoviesOption;
-    private static LoginOption loginOption;
-    private static QuitOption quitOption;
-    private static CheckoutBook checkoutBookOption;
-    private static UserProfile userProfileOption;
-    private static CheckoutMovie checkoutMovieOption;
-    private static ReturnBook returnBookOption;
-    private static ReturnMovie returnMovieOption;
-    private static ShowCheckoutBookDetails showCheckoutBookDetailsOption;
-    private static ShowCheckoutMoviesDetails showCheckoutMoviesDetailsOption;
-    private static Logout logoutOption;
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -44,37 +35,13 @@ public class BibliotecaApp {
         User librarian = new User("123-0002", "librarian", "Librarian", "lavanya@gmail.com", "8096724925", LIBRARIAN);
         bibliotecaApp.users.add(user);
         bibliotecaApp.users.add(librarian);
-        bibliotecaApp.initializeMenu();
-        bibliotecaApp.defaultMenuOptions = List.of(listBooksOption, listMoviesOption, loginOption, quitOption);
-        LIBRARIAN.setMenuOptions(
-                List.of(
-                        listBooksOption,
-                        listMoviesOption,
-                        checkoutBookOption,
-                        checkoutMovieOption,
-                        returnBookOption,
-                        returnMovieOption,
-                        showCheckoutBookDetailsOption,
-                        showCheckoutMoviesDetailsOption,
-                        logoutOption,
-                        userProfileOption,
-                        quitOption
-                )
-        );
+        DefaultMenuList defaultMenuList = new DefaultMenuList(bibliotecaApp.library, bibliotecaApp.users, bibliotecaApp.appUI);
+        bibliotecaApp.defaultMenuOptions = defaultMenuList.getMenuOptions();
+        LibrarianMenuList librarianMenuList = new LibrarianMenuList(bibliotecaApp.library, bibliotecaApp.appUI);
+        CustomerMenuList customerMenuList = new CustomerMenuList(bibliotecaApp.library, bibliotecaApp.appUI);
+        LIBRARIAN.setMenuOptions(librarianMenuList.getMenuOptions());
 
-        CUSTOMER.setMenuOptions(
-                List.of(
-                        listBooksOption,
-                        listMoviesOption,
-                        checkoutBookOption,
-                        checkoutMovieOption,
-                        returnBookOption,
-                        returnMovieOption,
-                        logoutOption,
-                        userProfileOption,
-                        quitOption
-                )
-        );
+        CUSTOMER.setMenuOptions(customerMenuList.getMenuOptions());
         bibliotecaApp.start();
     }
 
@@ -94,18 +61,4 @@ public class BibliotecaApp {
         } while (true);
     }
 
-    private void initializeMenu() {
-        listBooksOption = ListBooks.createListOfBooksOption(library, appUI);
-        listMoviesOption = new ListMovies(library, appUI);
-        loginOption = new LoginOption(users, appUI);
-        quitOption = QuitOption.createQuitOption(appUI);
-        checkoutBookOption = CheckoutBook.createCheckoutBookOption(library, appUI);
-        checkoutMovieOption = new CheckoutMovie(library, appUI);
-        returnBookOption = ReturnBook.createReturnBookOption(library, appUI);
-        returnMovieOption = new ReturnMovie(library, appUI);
-        showCheckoutBookDetailsOption = new ShowCheckoutBookDetails(library, appUI);
-        showCheckoutMoviesDetailsOption = new ShowCheckoutMoviesDetails(library, appUI);
-        logoutOption = new Logout(appUI);
-        userProfileOption = new UserProfile(appUI);
-    }
 }
