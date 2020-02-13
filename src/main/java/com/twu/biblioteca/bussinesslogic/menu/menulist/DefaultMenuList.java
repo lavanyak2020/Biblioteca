@@ -10,11 +10,11 @@ import java.util.List;
 public class DefaultMenuList {
     private final List<MenuOption> menuOptions;
 
-    public DefaultMenuList(Library library, List<User> users, PresentationInterface presentationInterface) {
+    public DefaultMenuList(Library library, PresentationInterface presentationInterface) {
         menuOptions = List.of(
                 ListBooks.createListOfBooksOption(library, presentationInterface),
                 new ListMovies(library, presentationInterface),
-                new LoginOption(users, presentationInterface),
+                new LoginOption(library, presentationInterface),
                 QuitOption.createQuitOption(presentationInterface)
         );
     }

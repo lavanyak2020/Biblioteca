@@ -1,5 +1,6 @@
 package com.twu.biblioteca.bussinesslogic.menu;
 
+import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 import com.twu.biblioteca.bussinesslogic.User;
 import com.twu.biblioteca.bussinesslogic.menu.items.LoginOption;
@@ -16,9 +17,11 @@ class LoginOptionTest {
         User user = mock(User.class);
         when(user.getLibraryNumber()).thenReturn("123-0001");
         when(user.getPassword()).thenReturn("1234");
+        Library library = mock(Library.class);
+        when(library.validateUser("123-0001","1234")).thenReturn(user);
         PresentationInterface presentationInterface = mock(PresentationInterface.class);
         when(presentationInterface.getLoginDetails()).thenReturn(new String[]{"123-0001", "1234"});
-        LoginOption loginOption = new LoginOption(List.of(user), presentationInterface);
+        LoginOption loginOption = new LoginOption(library, presentationInterface);
 
         loginOption.execute();
 

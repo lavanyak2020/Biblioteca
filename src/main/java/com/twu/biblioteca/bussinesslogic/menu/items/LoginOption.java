@@ -1,17 +1,16 @@
 package com.twu.biblioteca.bussinesslogic.menu.items;
 
+import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 import com.twu.biblioteca.bussinesslogic.User;
 
-import java.util.List;
-
 public class LoginOption extends MenuOption {
 
-    private final List<User> users;
+    private final Library library;
     private final PresentationInterface presentationInterface;
 
-    public LoginOption(List<User> users, PresentationInterface presentationInterface) {
-        this.users = users;
+    public LoginOption(Library library, PresentationInterface presentationInterface) {
+        this.library = library;
         this.presentationInterface = presentationInterface;
         this.name = "Login";
     }
@@ -19,19 +18,11 @@ public class LoginOption extends MenuOption {
     @Override
     public void execute() {
         String[] loginDetails = presentationInterface.getLoginDetails();
-        User user = getUserByLoginDetails(loginDetails);
-        if(user != null){
+        User user = library.validateUser(loginDetails[0], loginDetails[1]);
+        if (user != null) {
             presentationInterface.showSuccessLogin(user);
             return;
         }
         presentationInterface.showUnsuccessLogin();
-    }
-
-    private User getUserByLoginDetails(String[] loginDetails) {
-        for (User user : users) {
-            if ((user.getLibraryNumber().equals(loginDetails[0])) && (user.getPassword().equals(loginDetails[1])))
-                return user;
-        }
-        return null;
     }
 }

@@ -22,6 +22,7 @@ class LibraryTest {
     class BooksTest {
         List<Book> books;
         List<Movie> movies;
+        List<User> users;
 
         @BeforeEach
         public void setUp() {
@@ -30,18 +31,19 @@ class LibraryTest {
             Book book3 = mock(Book.class);
             books = List.of(book1, book2, book3);
             movies = List.of();
+            users = List.of();
         }
 
         @Test
         public void shouldReturnAllBooks() {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
 
             assertThat(library.getAvailableItems(), is(equalTo(books)));
         }
 
         @Test
         public void shouldReturnOnlyAvailableBooks() throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
 
             library.checkoutItem(books.get(0), null);
 
@@ -50,7 +52,7 @@ class LibraryTest {
 
         @Test
         public void shouldThrowExceptionWhileCheckoutUnavailableBook() throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             library.checkoutItem(books.get(0), null);
 
             assertThrows(ItemIsNotAvailable.class, () -> library.checkoutItem(books.get(0), null));
@@ -58,7 +60,7 @@ class LibraryTest {
 
         @Test
         public void shouldThrowExceptionWhileReturningInvalidBook() {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
 
             assertThrows(ItemIsNotCheckout.class, () -> library.returnItem(books.get(0), null));
         }
@@ -68,10 +70,12 @@ class LibraryTest {
     class MovieTests {
         List<Book> books;
         List<Movie> movies;
+        List<User> users;
 
         @BeforeEach
         public void setUp() {
             books = List.of();
+            users = List.of();
             Movie movie1 = mock(Movie.class);
             Movie movie2 = mock(Movie.class);
             Movie movie3 = mock(Movie.class);
@@ -80,14 +84,14 @@ class LibraryTest {
 
         @Test
         public void shouldReturnListOfAvailableMovies() {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
 
             assertEquals(library.getAvailableItems(), movies);
         }
 
         @Test
         public void shouldCheckoutMovieIfItIsAvailable() throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             Movie movieForCheckout = movies.get(0);
 
             library.checkoutItem(movieForCheckout, null);
@@ -97,7 +101,7 @@ class LibraryTest {
 
         @Test
         public void shouldThrowExceptionWhileCheckoutingUnavailableBook() throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             Movie movieForCheckout = movies.get(0);
             library.checkoutItem(movieForCheckout, null);
 
@@ -106,7 +110,7 @@ class LibraryTest {
 
         @Test
         public void shouldThrowExceptionWhileCheckoutingInvalidBookThatDoesNotBelongLibrary() {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             Movie movieForCheckout = mock(Movie.class);
 
             assertThrows(ItemDoesNotBelongToLibrary.class, () -> library.checkoutItem(movieForCheckout, null));
@@ -114,7 +118,7 @@ class LibraryTest {
 
         @Test
         public void shouldReturnMovieIfItIsCheckout() throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable, ItemIsNotCheckout {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             Movie movieForCheckout = movies.get(0);
             library.checkoutItem(movieForCheckout, null);
 
@@ -125,7 +129,7 @@ class LibraryTest {
 
         @Test
         public void shouldThrowExceptionWhileReturningUnCheckoutBook() {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             Movie movieForCheckout = movies.get(0);
 
             assertThrows(ItemIsNotCheckout.class, () -> library.returnItem(movieForCheckout, null));
@@ -134,9 +138,9 @@ class LibraryTest {
 
     @Nested
     class UserTests {
-
         private List<Book> books;
         private List<Movie> movies;
+        List<User> users;
 
         @BeforeEach
         public void setUp() {
@@ -145,11 +149,12 @@ class LibraryTest {
             Book book3 = mock(Book.class);
             books = List.of(book1, book2, book3);
             movies = List.of();
+            users = List.of();
         }
 
         @Test
         public void shouldAddUserAndCheckoutBookWhileCheckout() throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable {
-            Library library = new Library(books, movies);
+            Library library = new Library(books, movies, users);
             User user = mock(User.class);
             HashMap<Book, User> expectedBookCheckOutList = new HashMap<>();
             expectedBookCheckOutList.put(books.get(0), user);

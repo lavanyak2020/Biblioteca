@@ -7,15 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Library {
+    private final List<User> users = new ArrayList<>();
     private final List<LibraryItem> items = new ArrayList<>();
     private final List<LibraryItem> availableItems = new ArrayList<>();
     private final HashMap<LibraryItem, User> userCheckOutItemList = new HashMap<>();
 
-    public Library(List<Book> books, List<Movie> movies) {
+    public Library(List<Book> books, List<Movie> movies, List<User> users) {
         availableItems.addAll(books);
         availableItems.addAll(movies);
         items.addAll(books);
         items.addAll(movies);
+        this.users.addAll(users);
     }
 
     public List<LibraryItem> getAvailableItems() {
@@ -48,6 +50,14 @@ public class Library {
 
     public HashMap<LibraryItem, User> getUserCheckOutItemList() {
         return userCheckOutItemList;
+    }
+
+    public User validateUser(String libraryNumber, String password) {
+        for (User user : users) {
+            if ((user.getLibraryNumber().equals(libraryNumber)) && (user.getPassword().equals(password)))
+                return user;
+        }
+        return null;
     }
 
     private boolean isBelongToLibrary(LibraryItem book) {

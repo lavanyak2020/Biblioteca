@@ -17,7 +17,6 @@ public class BibliotecaApp {
     private ConsoleInterface appUI;
     private Library library;
     private List<MenuOption> defaultMenuOptions = new ArrayList<>();
-    private List<User> users;
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -26,13 +25,13 @@ public class BibliotecaApp {
 
         List<Movie> movies = getMovies();
 
-        bibliotecaApp.users = getUsers();
+        List<User> users = getUsers();
 
-        bibliotecaApp.library = new Library(books, movies);
+        bibliotecaApp.library = new Library(books, movies, users);
 
         bibliotecaApp.appUI = new ConsoleInterface(books, movies);
 
-        DefaultMenuList defaultMenuList = new DefaultMenuList(bibliotecaApp.library, bibliotecaApp.users, bibliotecaApp.appUI);
+        DefaultMenuList defaultMenuList = new DefaultMenuList(bibliotecaApp.library, bibliotecaApp.appUI);
 
         bibliotecaApp.defaultMenuOptions = defaultMenuList.getMenuOptions();
 
