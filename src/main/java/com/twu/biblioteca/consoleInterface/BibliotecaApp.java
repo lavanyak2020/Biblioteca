@@ -2,9 +2,7 @@ package com.twu.biblioteca.consoleInterface;
 
 import com.twu.biblioteca.bussinesslogic.*;
 import com.twu.biblioteca.bussinesslogic.menu.items.*;
-import com.twu.biblioteca.bussinesslogic.menu.menulist.CustomerMenuList;
-import com.twu.biblioteca.bussinesslogic.menu.menulist.DefaultMenuList;
-import com.twu.biblioteca.bussinesslogic.menu.menulist.LibrarianMenuList;
+import com.twu.biblioteca.bussinesslogic.menu.menulist.MenuList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,17 +29,13 @@ public class BibliotecaApp {
 
         bibliotecaApp.appUI = new ConsoleInterface(books, movies);
 
-        DefaultMenuList defaultMenuList = new DefaultMenuList(bibliotecaApp.library, bibliotecaApp.appUI);
+        MenuList menuList = new MenuList(bibliotecaApp.library, bibliotecaApp.appUI);
 
-        bibliotecaApp.defaultMenuOptions = defaultMenuList.getMenuOptions();
+        bibliotecaApp.defaultMenuOptions = menuList.getDefaultMenuOptions();
 
-        LibrarianMenuList librarianMenuList = new LibrarianMenuList(bibliotecaApp.library, bibliotecaApp.appUI);
+        LIBRARIAN.setMenuOptions(menuList.getLibrarianMenuOptions());
 
-        CustomerMenuList customerMenuList = new CustomerMenuList(bibliotecaApp.library, bibliotecaApp.appUI);
-
-        LIBRARIAN.setMenuOptions(librarianMenuList.getMenuOptions());
-
-        CUSTOMER.setMenuOptions(customerMenuList.getMenuOptions());
+        CUSTOMER.setMenuOptions(menuList.getCustomerMenuOptions());
 
         bibliotecaApp.start();
     }
