@@ -154,12 +154,13 @@ public class ConsoleInterface implements PresentationInterface {
     @Override
     public void showCheckoutBooksList(HashMap<LibraryItem, User> userCheckOutBookList) {
         Set<LibraryItem> items = userCheckOutBookList.keySet();
-
+        System.out.println("--------------------------------------------------------------------");
         for (LibraryItem item : items) {
             if(item.getClass() == Book.class){
                 Book book = (Book) item;
                 User user = userCheckOutBookList.get(book);
-                System.out.println(book.getName() + "\t\t" + user.getName());
+                System.out.println(book.getName() + "\t\t" + user.getName() + "\t\t" + user.getEmail());
+                System.out.println("--------------------------------------------------------------------");
             }
         }
     }
@@ -172,12 +173,13 @@ public class ConsoleInterface implements PresentationInterface {
     @Override
     public void showCheckoutMoviesList(HashMap<LibraryItem, User> userCheckOutMovieList) {
         Set<LibraryItem> items = userCheckOutMovieList.keySet();
-
+        System.out.println("--------------------------------------------------------------------");
         for (LibraryItem item : items) {
             if(item.getClass() == Movie.class){
                 Movie movie = (Movie) item;
                 User user = userCheckOutMovieList.get(movie);
-                System.out.println(movie.getName() + "\t\t" + user.getName());
+                System.out.println(movie.getName() + "\t\t" + user.getName() + "\t\t" + user.getEmail());
+                System.out.println("--------------------------------------------------------------------");
             }
         }
     }
@@ -190,10 +192,11 @@ public class ConsoleInterface implements PresentationInterface {
 
     @Override
     public void showProfile(User user) {
-        System.out.println("Library number : "+user.getLibraryNumber());
-        System.out.println("Name : "+user.getName());
-        System.out.println("email : "+user.getEmail());
-        System.out.println("Phone number : "+user.getPhoneNumber());
+        System.out.println("*---------------------------------- Profile ---------------------------------*");
+        System.out.println("\t\tLibrary number :\t "+user.getLibraryNumber());
+        System.out.println("\t\tName : \t"+user.getName());
+        System.out.println("\t\temail : \t"+user.getEmail());
+        System.out.println("\t\tPhone number : \t"+user.getPhoneNumber());
     }
 
     private Movie getMovieByName(String movieName) {
