@@ -21,6 +21,6 @@ public class ListBooks extends MenuOption {
 
     @Override
     public void execute() {
-        presentationInterface.listOfBooks(library.getAvailableBooks());
+        presentationInterface.listOfBooks(library.getAvailableItems());
     }
 }

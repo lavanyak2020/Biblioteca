@@ -2,7 +2,6 @@ package com.twu.biblioteca.bussinesslogic.menu;
 
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
-import com.twu.biblioteca.bussinesslogic.execption.*;
 
 public class ShowCheckoutBookDetails extends MenuOption {
     private final Library library;
@@ -16,6 +15,6 @@ public class ShowCheckoutBookDetails extends MenuOption {
 
     @Override
     public void execute() {
-        presentationInterface.showCheckoutBooksList(library.getUserCheckOutBookList());
+        presentationInterface.showCheckoutBooksList(library.getUserCheckOutItemList());
     }
 }

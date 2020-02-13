@@ -1,19 +1,17 @@
 package com.twu.biblioteca.consoleInterface;
 
-import com.twu.biblioteca.bussinesslogic.Book;
-import com.twu.biblioteca.bussinesslogic.Movie;
-import com.twu.biblioteca.bussinesslogic.User;
+import com.twu.biblioteca.bussinesslogic.*;
 import com.twu.biblioteca.bussinesslogic.execption.*;
+import com.twu.biblioteca.bussinesslogic.menu.CheckoutMovie;
 import com.twu.biblioteca.bussinesslogic.menu.MenuOption;
-import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 
 import java.util.*;
 
 import static com.twu.biblioteca.consoleInterface.Message.*;
 
 public class ConsoleInterface implements PresentationInterface {
-    private List<Book> books;
-    private List<Movie> movies;
+    private final List<Book> books;
+    private final List<Movie> movies;
     private User currentUser;
 
     public ConsoleInterface(List<Book> books, List<Movie> movies) {
@@ -44,18 +42,18 @@ public class ConsoleInterface implements PresentationInterface {
         MenuOption selectedOption = menuOptions.get(optionIndex);
         try {
             selectedOption.execute();
-        } catch (BookDoesNotBelongToLibrary bookDoesNotBelongToLibrary) {
-            bookDoesNotBelongToLibrary.printStackTrace();
-        } catch (BookIsNotAvailable bookIsNotAvailable) {
-            displayMessage(CHECKOUT_UNSUCCESS_MESSAGE);
-        } catch (BookIsNotCheckout bookIsNotCheckout) {
-            displayMessage(RETURN_UNSUCCESS_MESSAGE);
-        } catch (MovieDoesNotBelongToLibrary movieDoesNotBelongToLibrary) {
-            movieDoesNotBelongToLibrary.printStackTrace();
-        } catch (MovieIsNotAvailable movieIsNotAvailable) {
-            displayMessage(CHECKOUT_MOVIE_UNSUCCESS_MESSAGE);
-        } catch (MovieIsNotCheckout movieIsNotCheckout) {
-            displayMessage(RETURN_MOVIE_UNSUCCESS_MESSAGE);
+        } catch (ItemDoesNotBelongToLibrary itemDoesNotBelongToLibrary) {
+            itemDoesNotBelongToLibrary.printStackTrace();
+        } catch (ItemIsNotAvailable itemIsNotAvailable) {
+            if(selectedOption.getClass() == CheckoutMovie.class)
+                displayMessage(CHECKOUT_MOVIE_UNSUCCESS_MESSAGE);
+            else
+                displayMessage(CHECKOUT_UNSUCCESS_MESSAGE);
+        } catch (ItemIsNotCheckout itemIsNotCheckout) {
+            if(selectedOption.getClass() == CheckoutMovie.class)
+                displayMessage(RETURN_MOVIE_UNSUCCESS_MESSAGE);
+            else
+                displayMessage(RETURN_UNSUCCESS_MESSAGE);
         }
     }
 
@@ -70,20 +68,26 @@ public class ConsoleInterface implements PresentationInterface {
     }
 
     @Override
-    public void listOfBooks(List<Book> books) {
+    public void listOfBooks(List<LibraryItem> items) {
         System.out.println("--------------------------------------------------------------------");
-        for (Book book : books) {
-            System.out.println(book.getName() + "\t\t" + book.getAuthor() + "\t\t" + book.getPublicationYear());
-            System.out.println("--------------------------------------------------------------------");
+        for (LibraryItem item : items) {
+            if(item.getClass() == Book.class) {
+                Book book = (Book) item;
+                System.out.println(book.getName() + "\t\t" + book.getAuthor() + "\t\t" + book.getPublicationYear());
+                System.out.println("--------------------------------------------------------------------");
+            }
         }
     }
 
     @Override
-    public void listOfMovies(List<Movie> movies) {
+    public void listOfMovies(List<LibraryItem> items) {
         System.out.println("--------------------------------------------------------------------");
-        for (Movie movie : movies) {
-            System.out.println(movie.getName() + "\t\t" + movie.getDirectorName() + "\t\t" + movie.getReleaseYear() + "\t\t" + movie.getRating());
-            System.out.println("--------------------------------------------------------------------");
+        for (LibraryItem item : items) {
+            if( item.getClass() == Movie.class) {
+                Movie movie = (Movie) item;
+                System.out.println(movie.getName() + "\t\t" + movie.getDirectorName() + "\t\t" + movie.getReleaseYear() + "\t\t" + movie.getRating());
+                System.out.println("--------------------------------------------------------------------");
+            }
         }
     }
 
@@ -148,12 +152,15 @@ public class ConsoleInterface implements PresentationInterface {
     }
 
     @Override
-    public void showCheckoutBooksList(HashMap<Book, User> userCheckOutBookList) {
-        Set<Book> books = userCheckOutBookList.keySet();
+    public void showCheckoutBooksList(HashMap<LibraryItem, User> userCheckOutBookList) {
+        Set<LibraryItem> items = userCheckOutBookList.keySet();
 
-        for (Book book : books) {
-            User user = userCheckOutBookList.get(book);
-            System.out.println(book.getName() + "\t\t" + user.getName());
+        for (LibraryItem item : items) {
+            if(item.getClass() == Book.class){
+                Book book = (Book) item;
+                User user = userCheckOutBookList.get(book);
+                System.out.println(book.getName() + "\t\t" + user.getName());
+            }
         }
     }
 
@@ -163,12 +170,15 @@ public class ConsoleInterface implements PresentationInterface {
     }
 
     @Override
-    public void showCheckoutMoviesList(HashMap<Movie, User> userCheckOutMovieList) {
-        Set<Movie> movies = userCheckOutMovieList.keySet();
+    public void showCheckoutMoviesList(HashMap<LibraryItem, User> userCheckOutMovieList) {
+        Set<LibraryItem> items = userCheckOutMovieList.keySet();
 
-        for (Movie movie : movies) {
-            User user = userCheckOutMovieList.get(movie);
-            System.out.println(movie.getName() + "\t\t" + user.getName());
+        for (LibraryItem item : items) {
+            if(item.getClass() == Movie.class){
+                Movie movie = (Movie) item;
+                User user = userCheckOutMovieList.get(movie);
+                System.out.println(movie.getName() + "\t\t" + user.getName());
+            }
         }
     }
 
@@ -188,7 +198,7 @@ public class ConsoleInterface implements PresentationInterface {
 
     private Movie getMovieByName(String movieName) {
         for (Movie movie : movies) {
-            if (movie.getName().equals(movieName)) {
+            if (movie.getName().equalsIgnoreCase(movieName)) {
                 return movie;
             }
         }
@@ -197,8 +207,7 @@ public class ConsoleInterface implements PresentationInterface {
 
     private Book getBookByName(String bookName) {
         for (Book book : books) {
-            System.out.println(book.getName());
-            if (book.getName().equals(bookName)) {
+            if (book.getName().equalsIgnoreCase(bookName)) {
                 return book;
             }
         }

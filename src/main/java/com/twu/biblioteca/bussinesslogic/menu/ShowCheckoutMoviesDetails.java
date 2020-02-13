@@ -16,6 +16,6 @@ public class ShowCheckoutMoviesDetails extends MenuOption {
 
     @Override
     public void execute() {
-        presentationInterface.showCheckoutMoviesList(library.getUserCheckOutMovieList());
+        presentationInterface.showCheckoutMoviesList(library.getUserCheckOutItemList());
     }
 }

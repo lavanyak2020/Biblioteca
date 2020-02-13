@@ -16,7 +16,7 @@ class ShowCheckoutMoviesDetailsTest {
 
         showCheckoutMovies.execute();
 
-        verify(library, times(1)).getUserCheckOutMovieList();
+        verify(library, times(1)).getUserCheckOutItemList();
     }
 
 }

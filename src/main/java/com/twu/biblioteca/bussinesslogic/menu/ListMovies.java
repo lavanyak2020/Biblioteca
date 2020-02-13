@@ -13,6 +13,6 @@ public class ListMovies extends MenuOption {
     }
     @Override
     public void execute() {
-        presentationInterface.listOfMovies(library.getAvailableMovies());
+        presentationInterface.listOfMovies(library.getAvailableItems());
     }
 }

@@ -16,6 +16,6 @@ class ShowCheckoutBookDetailsTest {
 
         showCheckoutBookDetails.execute();
 
-        verify(library, times(1)).getUserCheckOutBookList();
+        verify(library, times(1)).getUserCheckOutItemList();
     }
 }

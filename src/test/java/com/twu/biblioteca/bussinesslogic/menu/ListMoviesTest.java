@@ -16,6 +16,6 @@ class ListMoviesTest {
 
         listMovies.execute();
 
-        verify(library, times(1)).getAvailableMovies();
+        verify(library, times(1)).getAvailableItems();
     }
 }

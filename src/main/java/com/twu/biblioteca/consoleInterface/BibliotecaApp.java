@@ -85,7 +85,7 @@ public class BibliotecaApp {
             User user = appUI.getUser();
             if (user == null) {
                 menu = defaultMenuOptions;
-            }else {
+            } else {
                 menu = user.getType().getMenuOption();
             }
             appUI.displayMenu(menu);

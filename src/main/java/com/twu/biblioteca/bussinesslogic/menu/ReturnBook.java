@@ -4,8 +4,8 @@ import com.twu.biblioteca.bussinesslogic.Book;
 import com.twu.biblioteca.bussinesslogic.Library;
 import com.twu.biblioteca.bussinesslogic.PresentationInterface;
 import com.twu.biblioteca.bussinesslogic.User;
-import com.twu.biblioteca.bussinesslogic.execption.BookDoesNotBelongToLibrary;
-import com.twu.biblioteca.bussinesslogic.execption.BookIsNotCheckout;
+import com.twu.biblioteca.bussinesslogic.execption.ItemDoesNotBelongToLibrary;
+import com.twu.biblioteca.bussinesslogic.execption.ItemIsNotCheckout;
 
 public class ReturnBook extends MenuOption {
     private Library library;
@@ -24,10 +24,10 @@ public class ReturnBook extends MenuOption {
     }
 
     @Override
-    public void execute() throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
+    public void execute() throws ItemDoesNotBelongToLibrary, ItemIsNotCheckout {
         Book book = presentationInterface.getBookFromUser();
         User user = presentationInterface.getUser();
-        library.returnBook(book, user);
+        library.returnItem(book, user);
         presentationInterface.showReturnSuccess();
     }
 }

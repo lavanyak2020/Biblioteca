@@ -2,7 +2,7 @@ package com.twu.biblioteca.bussinesslogic;
 
 import java.util.Objects;
 
-public class Movie {
+public class Movie implements LibraryItem {
 
     private final String name;
     private final String director;

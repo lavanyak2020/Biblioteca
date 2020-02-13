@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PresentationInterface {
 
-    void listOfBooks(List<Book> books);
+    void listOfBooks(List<LibraryItem> books);
 
     void quitApplication();
 
@@ -15,7 +15,7 @@ public interface PresentationInterface {
 
     void showReturnSuccess();
 
-    void listOfMovies(List<Movie> movies);
+    void listOfMovies(List<LibraryItem> movies);
 
     Movie getMovieFromUser();
 
@@ -29,11 +29,11 @@ public interface PresentationInterface {
 
     void showUnsuccessLogin();
 
-    void showCheckoutBooksList(HashMap<Book, User> userCheckOutBookList);
+    void showCheckoutBooksList(HashMap<LibraryItem, User> userCheckOutBookList);
 
     User getUser();
 
-    void showCheckoutMoviesList(HashMap<Movie, User> userCheckOutMovieList);
+    void showCheckoutMoviesList(HashMap<LibraryItem, User> userCheckOutMovieList);
 
     void showSuccessLogOut();
 

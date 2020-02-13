@@ -1,4 +1,4 @@
 package com.twu.biblioteca.bussinesslogic.execption;
 
-public class MovieIsNotCheckout extends Throwable {
+public class ItemIsNotAvailable extends Throwable {
 }

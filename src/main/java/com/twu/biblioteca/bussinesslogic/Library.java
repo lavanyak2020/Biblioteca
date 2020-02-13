@@ -7,97 +7,54 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Library {
-    private final List<Book> books;
-    private final List<Movie> movies;
-    private final List<Book> availableBooks = new ArrayList<>();
-    private List<Movie> availableMovies = new ArrayList<>();
-    private HashMap<Book, User> userCheckOutBookList = new HashMap<>();
-    private HashMap<Movie, User> userCheckOutMovieList = new HashMap<>();
+    private final List<LibraryItem> items = new ArrayList<>();
+    private final List<LibraryItem> availableItems = new ArrayList<>();
+    private final HashMap<LibraryItem, User> userCheckOutItemList = new HashMap<>();
 
     public Library(List<Book> books, List<Movie> movies) {
-        this.books = books;
-        this.movies = movies;
-        availableBooks.addAll(books);
-        availableMovies.addAll(movies);
+        availableItems.addAll(books);
+        availableItems.addAll(movies);
+        items.addAll(books);
+        items.addAll(movies);
     }
 
-    public List<Book> getAvailableBooks() {
-        return availableBooks;
+    public List<LibraryItem> getAvailableItems() {
+        return availableItems;
     }
 
-    public List<Movie> getAvailableMovies() {
-        return availableMovies;
-    }
-
-    public void checkoutBook(Book book, User user) throws BookDoesNotBelongToLibrary, BookIsNotAvailable {
-        if (book == null || !isBelongToLibrary(book)) {
-            throw new BookDoesNotBelongToLibrary();
+    public void checkoutItem(LibraryItem item, User user) throws ItemDoesNotBelongToLibrary, ItemIsNotAvailable {
+        if (item == null || !isBelongToLibrary(item)) {
+            throw new ItemDoesNotBelongToLibrary();
         }
-        if (isAvailable(book)) {
-            availableBooks.remove(book);
-            userCheckOutBookList.put(book, user);
+        if (isAvailable(item)) {
+            availableItems.remove(item);
+            userCheckOutItemList.put(item, user);
             return;
         }
-        throw new BookIsNotAvailable();
+        throw new ItemIsNotAvailable();
     }
 
-    public void checkoutMovie(Movie movie, User user) throws MovieIsNotAvailable, MovieDoesNotBelongToLibrary {
-        if (movie == null || !isBelongToLibrary(movie)) {
-            throw new MovieDoesNotBelongToLibrary();
+    public void returnItem(LibraryItem item, User user) throws ItemDoesNotBelongToLibrary, ItemIsNotCheckout {
+        if (item == null || !isBelongToLibrary(item)) {
+            throw new ItemDoesNotBelongToLibrary();
         }
-        if (isAvailable(movie)) {
-            availableMovies.remove(movie);
-            userCheckOutMovieList.put(movie, user);
+        if (!isAvailable(item) && (userCheckOutItemList.get(item) == user)) {
+            availableItems.add(item);
+            userCheckOutItemList.remove(item);
             return;
         }
-        throw new MovieIsNotAvailable();
+        throw new ItemIsNotCheckout();
     }
 
-    public void returnBook(Book book, User user) throws BookDoesNotBelongToLibrary, BookIsNotCheckout {
-        if (book == null || !isBelongToLibrary(book)) {
-            throw new BookDoesNotBelongToLibrary();
-        }
-        if (!isAvailable(book) && (userCheckOutBookList.get(book) == user)) {
-            availableBooks.add(book);
-            userCheckOutBookList.remove(book);
-            return;
-        }
-        throw new BookIsNotCheckout();
+    public HashMap<LibraryItem, User> getUserCheckOutItemList() {
+        return userCheckOutItemList;
     }
 
-    public void returnMovie(Movie movie, User user) throws MovieIsNotCheckout, MovieDoesNotBelongToLibrary {
-        if (movie == null || !isBelongToLibrary(movie)) {
-            throw new MovieDoesNotBelongToLibrary();
-        }
-        if (!isAvailable(movie) && (userCheckOutMovieList.get(movie) == user)) {
-            availableMovies.add(movie);
-            userCheckOutMovieList.remove(movie);
-            return;
-        }
-        throw new MovieIsNotCheckout();
+    private boolean isBelongToLibrary(LibraryItem book) {
+        return items.contains(book);
     }
 
-    public HashMap<Book, User> getUserCheckOutBookList() {
-        return userCheckOutBookList;
-    }
-
-    public HashMap<Movie, User> getUserCheckOutMovieList() {
-        return userCheckOutMovieList;
-    }
-
-    private boolean isBelongToLibrary(Book book) {
-        return books.contains(book);
-    }
-
-    private boolean isBelongToLibrary(Movie movie) {
-        return movies.contains(movie);
-    }
-
-    private boolean isAvailable(Book book) {
-        return availableBooks.contains(book);
-    }
-
-    private boolean isAvailable(Movie movie) {
-        return availableMovies.contains(movie);
+    private boolean isAvailable(LibraryItem book) {
+        return availableItems.contains(book);
     }
 }
